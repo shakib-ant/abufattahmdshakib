@@ -1,42 +1,30 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import CaseStudyCard from "./components/CaseStudyCard";
 import { col1Projects, col2Projects, col3Projects } from "./data";
+import {
+  createLoopArray,
+  useCaseStudyModal,
+  modalOverlayVariants,
+  modalContentVariants,
+} from "./utils";
 import "./CaseStudy.css";
-
-// Loop helper
-const createLoopArray = (arr, minLength = 8) => {
-  if (!arr || arr.length === 0) return [];
-  let base = [...arr];
-  while (base.length < minLength) {
-    base = [...base, ...arr];
-  }
-  return [...base, ...base];
-};
 
 const doubledCol1 = createLoopArray(col1Projects);
 const doubledCol2 = createLoopArray(col2Projects);
 const doubledCol3 = createLoopArray(col3Projects);
 
 export default function CaseStudy() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleCardClick = (project) => {
-    setSelectedProject(project);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProject(null);
-  };
+  const {
+    selectedProject,
+    mounted,
+    handleCardClick,
+    handleCloseModal,
+  } = useCaseStudyModal();
 
   return (
     <section
@@ -174,17 +162,18 @@ export default function CaseStudy() {
           <AnimatePresence>
             {selectedProject && (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                variants={modalOverlayVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
                 onClick={handleCloseModal}
                 className="fixed inset-0 z-[999999] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
               >
                 <motion.div
-                  initial={{ scale: 0.88, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.88, opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                  variants={modalContentVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
                   className="relative w-full max-w-[440px] sm:max-w-[560px] aspect-[607/384] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-[0_0_35px_rgba(226,88,34,0.4)] border border-[#E25822]/40 cursor-pointer"
                 >
                   <Image

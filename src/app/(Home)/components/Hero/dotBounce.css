@@ -1,0 +1,107 @@
+/* Drop Desktop */
+@keyframes ball-drop-bounce {
+  0% {
+    transform: translate(-360px, -140px);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  18% {
+    transform: translate(-280px, -12px);
+  }
+  38% {
+    transform: translate(-200px, -75px);
+  }
+  58% {
+    transform: translate(-140px, -12px);
+  }
+  76% {
+    transform: translate(-90px, -35px);
+  }
+  88% {
+    transform: translate(-50px, -2px);
+  }
+  95% {
+    transform: translate(-20px, -12px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+/* Drop Mobile */
+@keyframes ball-drop-bounce-mobile {
+  0% {
+    transform: translate(-90px, -50px);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  18% {
+    transform: translate(-70px, -6px);
+  }
+  38% {
+    transform: translate(-50px, -25px);
+  }
+  58% {
+    transform: translate(-35px, -6px);
+  }
+  76% {
+    transform: translate(-22px, -14px);
+  }
+  88% {
+    transform: translate(-12px, -1px);
+  }
+  95% {
+    transform: translate(-5px, -5px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+/* Idle Jump */
+@keyframes dot-idle-jump {
+  0%, 100% {
+    transform: translate(0px, 0px);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  45% {
+    transform: translate(0px, -9px);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  90% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes dot-idle-jump-mobile {
+  0%, 100% {
+    transform: translate(0px, 0px);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  45% {
+    transform: translate(0px, -5px);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  90% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.animate-shakib-dot-bounce {
+  animation: ball-drop-bounce 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards,
+             dot-idle-jump 1.4s 1.6s infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-shakib-dot-bounce {
+    animation: ball-drop-bounce-mobile 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards,
+               dot-idle-jump-mobile 1.4s 1.6s infinite;
+  }
+}
+

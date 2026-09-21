@@ -1,0 +1,83 @@
+/* AboutMe Styles */
+
+@keyframes about-plus-pulse-1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 0.95;
+  }
+}
+
+@keyframes about-plus-pulse-2 {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.9;
+  }
+}
+
+@keyframes about-plus-pulse-3 {
+  0%, 100% {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.4;
+  }
+}
+
+.about-plus-pulse-1 {
+  animation: about-plus-pulse-1 3.2s ease-in-out infinite;
+}
+
+.about-plus-pulse-2 {
+  animation: about-plus-pulse-2 2.8s ease-in-out infinite;
+}
+
+.about-plus-pulse-3 {
+  animation: about-plus-pulse-3 3.5s ease-in-out infinite;
+}
+
+/* Dark Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #E25822;
+}
+
+/* Ripple Animation */
+@keyframes water-ripple {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.75;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.water-ripple-effect {
+  animation: water-ripple 3.0s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}

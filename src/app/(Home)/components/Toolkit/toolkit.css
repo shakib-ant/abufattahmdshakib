@@ -1,0 +1,61 @@
+/* Toolkit Styles */
+
+.toolkit-grid {
+  width: 714px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: 59.5px repeat(5, 119px) 59.5px;
+  grid-template-rows: 50px repeat(4, 100px) 50px;
+  transform-origin: center;
+}
+
+/* Vertical Line */
+.toolkit-line-v {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  min-width: 1px;
+  background-color: rgba(236, 163, 139, 0.07);
+  transform-origin: top;
+  transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Horizontal Line */
+.toolkit-line-h {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  min-height: 1px;
+  background-color: rgba(236, 163, 139, 0.07);
+  transform-origin: left;
+  transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Shaded Background */
+.toolkit-shaded-bg {
+  background: #FCEDE914;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* Icon Animation */
+.toolkit-icon-smooth {
+  transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Icon Wrapper */
+.toolkit-icon-wrapper {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}

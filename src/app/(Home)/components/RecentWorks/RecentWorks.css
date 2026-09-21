@@ -1,0 +1,46 @@
+/* Pulse Animation */
+
+@keyframes plus-pulse-1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 0.95;
+  }
+}
+
+@keyframes plus-pulse-2 {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.9;
+  }
+}
+
+@keyframes plus-pulse-3 {
+  0%, 100% {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.4;
+  }
+}
+
+.plus-pulse-anim-1 {
+  animation: plus-pulse-1 3.2s ease-in-out infinite;
+}
+
+.plus-pulse-anim-2 {
+  animation: plus-pulse-2 2.8s ease-in-out infinite;
+}
+
+.plus-pulse-anim-3 {
+  animation: plus-pulse-3 3.5s ease-in-out infinite;
+}

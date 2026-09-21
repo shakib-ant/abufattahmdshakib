@@ -1,52 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { statsData, careerObjective } from "../data";
-
-function CountUpItem({ targetNumber, suffix = "+" }) {
-  const [count, setCount] = useState(0);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          let current = 0;
-          const step = Math.max(1, Math.floor(targetNumber / 25));
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= targetNumber) {
-              setCount(targetNumber);
-              clearInterval(timer);
-            } else {
-              setCount(current);
-            }
-          }, 50);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [targetNumber]);
-
-  return (
-    <span
-      ref={containerRef}
-      className="font-fustat text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#E25822] leading-none shrink-0"
-    >
-      {count}
-      {suffix}
-    </span>
-  );
-}
+import { CountUpItem } from "../utils";
 
 export default function AboutMeStats() {
   return (

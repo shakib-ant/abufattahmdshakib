@@ -1,27 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { experienceData, educationData } from "../data";
-
-const FourPointStar = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="text-[#E25822] shrink-0 mt-1"
-  >
-    <path
-      d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+import { FourPointStar, useAboutTabs, tabContentVariants } from "../utils";
 
 export default function AboutMeTabs() {
-  const [activeTab, setActiveTab] = useState("experience");
+  const { activeTab, setActiveTab } = useAboutTabs("experience");
 
   const renderList = (data) => (
     <div className="p-4 sm:p-8 flex flex-col gap-5 sm:gap-8 w-full">

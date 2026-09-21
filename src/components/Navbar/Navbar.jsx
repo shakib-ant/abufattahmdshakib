@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone } from "lucide-react";
@@ -9,118 +9,25 @@ import CommonButton from "@/components/CommonButton/CommonButton";
 import "./Navbar.css";
 
 import { navLinks, socialLinks } from "./data";
-
-// Animation variants
-const overlayVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-const navContainerVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.08,
-      staggerDirection: -1,
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.65,
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const navItemVariants = {
-  hidden: {
-    opacity: 0,
-    y: -16,
-    scale: 0.96,
-    transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 1.3,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
+import {
+  overlayVariants,
+  navContainerVariants,
+  navItemVariants,
+  useNavbar,
+} from "./utils";
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const isClickingRef = useRef(false);
-
-  const handleNavClick = (href) => {
-    setActiveNav(href);
-    isClickingRef.current = true;
-    setTimeout(() => {
-      isClickingRef.current = false;
-    }, 1600);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Toggle sticky glass effect
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      if (isClickingRef.current) return;
-
-      const viewportFocusY = window.scrollY + window.innerHeight * 0.35;
-      let currentActive = "";
-
-      navLinks.forEach((link) => {
-        const id = link.href.substring(1);
-        const section = document.getElementById(id);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          const elementTop = rect.top + window.scrollY;
-          const elementBottom = elementTop + section.offsetHeight;
-
-          if (viewportFocusY >= elementTop && viewportFocusY < elementBottom) {
-            currentActive = link.href;
-          }
-        }
-      });
-
-      setActiveNav(currentActive);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const {
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    activeNav,
+    isScrolled,
+    handleNavClick,
+  } = useNavbar(navLinks);
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full transition-all duration-300 px-4 ${
+      className={`fixed top-0 left-0 w-full h-[72px] md:h-[80px] transition-all duration-300 px-4 flex items-center ${
         mobileMenuOpen
           ? "z-[100] bg-[#0F0F0F] border-b border-[#1F1F1F]"
           : isScrolled
@@ -130,16 +37,16 @@ export default function Navbar() {
     >
       <div className="max-w-[1439px] mx-auto w-full">
         {/* Desktop Navbar */}
-        <nav className="hidden md:flex w-full py-[16px] px-4 md:px-6 items-center justify-between">
+        <nav className="hidden md:flex w-full h-full items-center justify-between">
           {/* Nav links */}
           <div className="flex items-center gap-8 md:gap-12">
             <Link href="/" className="flex items-center">
               <Image
                 src="/share/shakibLogo.png"
                 alt="Shakib Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10 object-contain hover:opacity-80 transition-opacity"
+                width={44}
+                height={44}
+                className="lg:w-[calc((40/1920)*100vw)] lg:h-[calc((40/1440)*100vw)] object-cover hover:opacity-80 transition-opacity"
               />
             </Link>
             {navLinks.map((link) => {

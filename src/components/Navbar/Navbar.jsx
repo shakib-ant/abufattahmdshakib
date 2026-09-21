@@ -8,35 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import CommonButton from "@/components/CommonButton/CommonButton";
 import "./Navbar.css";
 
-// Navigation Links Data
-export const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Resume", href: "#resume" },
-  { label: "About", href: "#about" },
-];
-
-// Social Links Data
-export const socialLinks = [
-  {
-    title: "Phone",
-    href: "tel:+1234567890",
-    icon: "/share/phone.png",
-  },
-  {
-    title: "Facebook",
-    href: "https://facebook.com",
-    icon: "/share/facebook.png",
-    target: "_blank",
-    rel: "noreferrer",
-  },
-  {
-    title: "LinkedIn",
-    href: "https://linkedin.com",
-    icon: "/share/linkdeni.png",
-    target: "_blank",
-    rel: "noreferrer",
-  },
-];
+import { navLinks, socialLinks } from "./data";
 
 // Animation variants
 const overlayVariants = {
@@ -98,7 +70,8 @@ const navItemVariants = {
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState("#work");
+  const [activeNav, setActiveNav] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
   const isClickingRef = useRef(false);
 
   const handleNavClick = (href) => {
@@ -111,35 +84,50 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Toggle sticky glass effect
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
       if (isClickingRef.current) return;
 
-      // Page section order from top to bottom
-      const pageSections = ["about", "work", "resume"];
-      const scrollPosition = window.scrollY + 300;
+      const viewportFocusY = window.scrollY + window.innerHeight * 0.35;
+      let currentActive = "";
 
-      for (let i = pageSections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(pageSections[i]);
+      navLinks.forEach((link) => {
+        const id = link.href.substring(1);
+        const section = document.getElementById(id);
         if (section) {
           const rect = section.getBoundingClientRect();
           const elementTop = rect.top + window.scrollY;
-          if (scrollPosition >= elementTop) {
-            setActiveNav(`#${pageSections[i]}`);
-            return;
+          const elementBottom = elementTop + section.offsetHeight;
+
+          if (viewportFocusY >= elementTop && viewportFocusY < elementBottom) {
+            currentActive = link.href;
           }
         }
-      }
+      });
 
-      if (window.scrollY < 350) {
-        setActiveNav("#work");
-      }
+      setActiveNav(currentActive);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className={`relative w-full border-b border-[#1F1F1F] opacity-100 px-4 transition-colors duration-300 ${mobileMenuOpen ? "z-[100] bg-[#0F0F0F]" : "z-20 bg-transparent"}`}>
+    <header
+      className={`fixed top-0 left-0 w-full transition-all duration-300 px-4 ${
+        mobileMenuOpen
+          ? "z-[100] bg-[#0F0F0F] border-b border-[#1F1F1F]"
+          : isScrolled
+          ? "z-50 bg-[#E54F1F]/15 backdrop-blur-md border-b border-[#E54F1F]/40"
+          : "z-20 bg-transparent border-b border-[#1F1F1F]/60"
+      }`}
+    >
       <div className="max-w-[1439px] mx-auto w-full">
         {/* Desktop Navbar */}
         <nav className="hidden md:flex w-full py-[16px] px-4 md:px-6 items-center justify-between">
@@ -156,6 +144,24 @@ export default function Navbar() {
             </Link>
             {navLinks.map((link) => {
               const isActive = activeNav === link.href;
+              const isDownload = link.download;
+
+              if (isDownload) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    download={link.fileName || true}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative group py-1 text-sm md:text-base font-fustat inline-flex flex-col items-center transition-colors duration-200 text-neutral-400 hover:text-white"
+                  >
+                    <span>{link.label}</span>
+                    <span className="absolute bottom-1 left-0 w-full h-[2px] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out shadow-[0_0_8px_rgba(229,79,31,0.7)]" />
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={link.label}
@@ -274,6 +280,7 @@ export default function Navbar() {
                   {navLinks.map((link, index) => {
                     const isMiddle = index === 1;
                     const isActive = activeNav === link.href;
+                    const isDownload = link.download;
                     return (
                       <motion.li
                         key={link.label}
@@ -290,21 +297,36 @@ export default function Navbar() {
                             <div className="animate-horizontal-border-beam bottom-0 top-auto" style={{ animationDelay: "4.5s" }} />
                           </>
                         )}
-                        <Link
-                          href={link.href}
-                          onClick={() => {
-                            handleNavClick(link.href);
-                            setMobileMenuOpen(false);
-                          }}
-                          className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 ${
-                            isActive ? "text-[#E54F1F]" : "text-white"
-                          } ${isMiddle ? "relative z-10" : ""}`}
-                        >
-                          <span>{link.label}</span>
-                          {isActive && (
-                            <span className="w-[6px] h-[6px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]" />
-                          )}
-                        </Link>
+                        {isDownload ? (
+                          <a
+                            href={link.href}
+                            download={link.fileName || true}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 text-white hover:text-[#E54F1F] ${
+                              isMiddle ? "relative z-10" : ""
+                            }`}
+                          >
+                            <span>{link.label}</span>
+                          </a>
+                        ) : (
+                          <Link
+                            href={link.href}
+                            onClick={() => {
+                              handleNavClick(link.href);
+                              setMobileMenuOpen(false);
+                            }}
+                            className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 ${
+                              isActive ? "text-[#E54F1F]" : "text-white"
+                            } ${isMiddle ? "relative z-10" : ""}`}
+                          >
+                            <span>{link.label}</span>
+                            {isActive && (
+                              <span className="w-[6px] h-[6px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]" />
+                            )}
+                          </Link>
+                        )}
                       </motion.li>
                     );
                   })}

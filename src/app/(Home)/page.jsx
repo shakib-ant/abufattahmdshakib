@@ -12,7 +12,7 @@ import ContactMe from "./components/ContactMe/ContactMe";
 
 function Home() {
   return (
-    <main className="min-h-screen bg-[#0F0F0F] text-white relative flex flex-col">
+    <main className="min-h-screen bg-[#0F0F0F] text-white relative flex flex-col pt-[72px] md:pt-[80px]">
       {/* Spotlight Image */}
       <div className="absolute -top-[120px] lg:-top-[243px] left-1/2 -translate-x-1/2 w-full h-[500px] lg:w-[845px] lg:h-[783px] pointer-events-none z-30 flex justify-center">
         {/* Spotlight Image */}

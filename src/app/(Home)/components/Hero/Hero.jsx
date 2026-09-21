@@ -1,22 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import { useHeroDot } from "./utils";
 import "./Hero.css";
 import "./dotBounce.css";
 
 export default function Hero() {
-  const [showDot, setShowDot] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowDot(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  const { showDot } = useHeroDot();
 
   return (
     <>

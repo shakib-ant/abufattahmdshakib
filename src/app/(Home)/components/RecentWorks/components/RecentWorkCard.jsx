@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useImageFallback } from "../utils";
 
 export default function RecentWorkCard({ work }) {
-  const [imgError, setImgError] = useState(false);
+  const { imgError, handleImageError } = useImageFallback();
 
   return (
     <div className="group relative flex flex-col gap-4 p-3.5 sm:p-4 transition-all duration-300">
@@ -18,7 +19,7 @@ export default function RecentWorkCard({ work }) {
             alt={work.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-103"
-            onError={() => setImgError(true)}
+            onError={handleImageError}
           />
         ) : (
           /* Image Placeholder */

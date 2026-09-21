@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-/* Scroll reveal */
+// Scroll Reveal
 export function useScrollReveal(options = { threshold: 0.2 }) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -27,20 +27,21 @@ export function useScrollReveal(options = { threshold: 0.2 }) {
   return [sectionRef, isVisible];
 }
 
-/* Cell info */
+// Cell Info
 export function getGridCellInfo(r, c, data = []) {
   const isContent = r >= 1 && r <= 4 && c >= 1 && c <= 5;
   const rowIndex = r - 1;
   const colIndex = c - 1;
   const dataIndex = rowIndex * 5 + colIndex;
   const item = isContent ? data[dataIndex] || null : null;
-  // Cell pattern
+
+  // Cell Pattern
   const isShaded =
     isContent &&
     (((r === 1 || r === 3) && (c === 2 || c === 4)) ||
       ((r === 2 || r === 4) && c === 3));
 
-  // Cascade delay
+  // Line Delay
   const lineDelay = r * 180 + c * 90;
 
   return {

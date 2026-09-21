@@ -10,7 +10,7 @@ import "./AboutMe.css";
 
 export default function AboutMe() {
   return (
-    <section className="relative w-full pt-0 lg:pt-[20px]  z-20 flex flex-col items-center">
+    <section id="about" className="relative w-full pt-0 lg:pt-[20px] z-20 flex flex-col items-center">
       {/* Glow Grid */}
       <AboutMeGlowGrid />
 

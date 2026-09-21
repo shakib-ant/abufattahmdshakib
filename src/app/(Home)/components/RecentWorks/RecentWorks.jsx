@@ -10,7 +10,7 @@ import "./RecentWorks.css";
 
 export default function RecentWorks() {
   return (
-    <section className="relative w-full py-16 sm:py-20 md:py-24 overflow-hidden z-20 flex flex-col items-center">
+    <section id="work" className="relative w-full py-16 sm:py-20 md:py-24 overflow-hidden z-20 flex flex-col items-center">
       {/* Glow Effect */}
       <div
         className="absolute top-[171px] pointer-events-none rounded-full z-0 left-1/2 -translate-x-1/2"

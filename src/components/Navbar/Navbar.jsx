@@ -1,12 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CommonButton from "@/components/CommonButton/CommonButton";
 import "./Navbar.css";
+
+// Navigation Links Data
+export const navLinks = [
+  { label: "Work", href: "#work" },
+  { label: "Resume", href: "#resume" },
+  { label: "About", href: "#about" },
+];
+
+// Social Links Data
+export const socialLinks = [
+  {
+    title: "Phone",
+    href: "tel:+1234567890",
+    icon: "/share/phone.png",
+  },
+  {
+    title: "Facebook",
+    href: "https://facebook.com",
+    icon: "/share/facebook.png",
+    target: "_blank",
+    rel: "noreferrer",
+  },
+  {
+    title: "LinkedIn",
+    href: "https://linkedin.com",
+    icon: "/share/linkdeni.png",
+    target: "_blank",
+    rel: "noreferrer",
+  },
+];
 
 // Animation variants
 const overlayVariants = {
@@ -68,6 +98,45 @@ const navItemVariants = {
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState("#work");
+  const isClickingRef = useRef(false);
+
+  const handleNavClick = (href) => {
+    setActiveNav(href);
+    isClickingRef.current = true;
+    setTimeout(() => {
+      isClickingRef.current = false;
+    }, 1600);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isClickingRef.current) return;
+
+      // Page section order from top to bottom
+      const pageSections = ["about", "work", "resume"];
+      const scrollPosition = window.scrollY + 300;
+
+      for (let i = pageSections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(pageSections[i]);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          if (scrollPosition >= elementTop) {
+            setActiveNav(`#${pageSections[i]}`);
+            return;
+          }
+        }
+      }
+
+      if (window.scrollY < 350) {
+        setActiveNav("#work");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className={`relative w-full border-b border-[#1F1F1F] opacity-100 px-4 transition-colors duration-300 ${mobileMenuOpen ? "z-[100] bg-[#0F0F0F]" : "z-20 bg-transparent"}`}>
@@ -85,24 +154,31 @@ export default function Navbar() {
                 className="w-10 h-10 object-contain hover:opacity-80 transition-opacity"
               />
             </Link>
-            <Link
-              href="#work"
-              className="text-neutral-400 hover:text-white transition-colors text-sm md:text-base font-fustat"
-            >
-              Work
-            </Link>
-            <Link
-              href="#resume"
-              className="text-neutral-400 hover:text-white transition-colors text-sm md:text-base font-fustat"
-            >
-              Resume
-            </Link>
-            <Link
-              href="#about"
-              className="text-neutral-400 hover:text-white transition-colors text-sm md:text-base font-fustat"
-            >
-              About
-            </Link>
+            {navLinks.map((link) => {
+              const isActive = activeNav === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`relative group py-1 text-sm md:text-base font-fustat inline-flex flex-col items-center transition-colors duration-200 ${
+                    isActive ? "text-white font-medium" : "text-neutral-400"
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <span className="absolute bottom-1 left-0 w-full h-[2px] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out shadow-[0_0_8px_rgba(229,79,31,0.7)]" />
+
+                  {/* Active Indicator: 5px rounded dot with #E54F1F glow shadow */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavDot"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]"
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Contact Button */}
@@ -195,96 +271,66 @@ export default function Navbar() {
                 className="flex flex-col justify-center items-center w-full flex-1 my-auto px-6 py-4 gap-16 z-10 overflow-y-auto"
               >
                 <motion.ul variants={navContainerVariants} className="flex flex-col items-center justify-center w-full max-w-[340px]">
-                  <motion.li variants={navItemVariants} className="w-full py-5 text-center">
-                    <Link
-                      href="#work"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="font-extrabold text-2xl sm:text-3xl text-white active:scale-95 transition-transform duration-150 block"
-                    >
-                      Work
-                    </Link>
-                  </motion.li>
-
-                  {/* Middle Item */}
-                  <motion.li variants={navItemVariants} className="relative border-t border-b border-[#1F1F1F] w-full py-5 text-center overflow-hidden">
-                    {/* Top Beam */}
-                    <div className="animate-horizontal-border-beam top-0" style={{ animationDelay: "2s" }} />
-                    {/* Bottom Beam */}
-                    <div className="animate-horizontal-border-beam bottom-0 top-auto" style={{ animationDelay: "4.5s" }} />
-
-                    <Link
-                      href="#resume"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="font-extrabold text-2xl sm:text-3xl text-white active:scale-95 transition-transform duration-150 block relative z-10"
-                    >
-                      Resume
-                    </Link>
-                  </motion.li>
-
-                  <motion.li variants={navItemVariants} className="w-full py-5 text-center">
-                    <Link
-                      href="#about"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="font-extrabold text-2xl sm:text-3xl text-white active:scale-95 transition-transform duration-150 block"
-                    >
-                      About
-                    </Link>
-                  </motion.li>
+                  {navLinks.map((link, index) => {
+                    const isMiddle = index === 1;
+                    const isActive = activeNav === link.href;
+                    return (
+                      <motion.li
+                        key={link.label}
+                        variants={navItemVariants}
+                        className={`w-full py-5 text-center ${
+                          isMiddle ? "relative border-t border-b border-[#1F1F1F] overflow-hidden" : ""
+                        }`}
+                      >
+                        {isMiddle && (
+                          <>
+                            {/* Top Beam */}
+                            <div className="animate-horizontal-border-beam top-0" style={{ animationDelay: "2s" }} />
+                            {/* Bottom Beam */}
+                            <div className="animate-horizontal-border-beam bottom-0 top-auto" style={{ animationDelay: "4.5s" }} />
+                          </>
+                        )}
+                        <Link
+                          href={link.href}
+                          onClick={() => {
+                            handleNavClick(link.href);
+                            setMobileMenuOpen(false);
+                          }}
+                          className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 ${
+                            isActive ? "text-[#E54F1F]" : "text-white"
+                          } ${isMiddle ? "relative z-10" : ""}`}
+                        >
+                          <span>{link.label}</span>
+                          {isActive && (
+                            <span className="w-[6px] h-[6px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]" />
+                          )}
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
                 </motion.ul>
 
                 {/* Social Icons */}
                 <motion.div variants={navContainerVariants} className="flex items-center justify-center gap-6 pt-4 pb-4 shrink-0">
-                  {/* Phone */}
-                  <motion.a
-                    variants={navItemVariants}
-                    href="tel:+1234567890"
-                    className="flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
-                    title="Phone"
-                  >
-                    <Image
-                      src="/share/phone.png"
-                      alt="Phone"
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 object-contain"
-                    />
-                  </motion.a>
-
-                  {/* Facebook */}
-                  <motion.a
-                    variants={navItemVariants}
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
-                    title="Facebook"
-                  >
-                    <Image
-                      src="/share/facebook.png"
-                      alt="Facebook"
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 object-contain"
-                    />
-                  </motion.a>
-
-                  {/* LinkedIn */}
-                  <motion.a
-                    variants={navItemVariants}
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
-                    title="LinkedIn"
-                  >
-                    <Image
-                      src="/share/linkdeni.png"
-                      alt="LinkedIn"
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 object-contain"
-                    />
-                  </motion.a>
+                  {socialLinks.map((social) => (
+                    <motion.a
+                      key={social.title}
+                      variants={navItemVariants}
+                      href={social.href}
+                      target={social.target}
+                      rel={social.rel}
+                      className="flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+                      title={social.title}
+                    >
+                      <Image
+                        src={social.icon}
+                        alt={social.title}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </motion.a>
+                  ))}
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -294,5 +340,3 @@ export default function Navbar() {
     </header>
   );
 }
-
-

@@ -1,136 +1,32 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+import { useContactForm, alertVariants } from "../utils";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    secondaryEmail: "",
-    subject: "",
-    message: "",
-  });
-
-  const [status, setStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
-  const [responseMsg, setResponseMsg] = useState("");
-  const timeoutRef = useRef(null);
-
-  const clearTimer = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    return () => clearTimer();
-  }, []);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    clearTimer();
-
-    // Strict Email Validation
-    const trimmedEmail = formData.email.trim();
-    if (!EMAIL_REGEX.test(trimmedEmail)) {
-      setStatus("error");
-      setResponseMsg("Please enter a valid email address (e.g. name@example.com).");
-      timeoutRef.current = setTimeout(() => {
-        setStatus("idle");
-        setResponseMsg("");
-      }, 5000);
-      return;
-    }
-
-    const trimmedSecondary = formData.secondaryEmail.trim();
-    if (trimmedSecondary && !EMAIL_REGEX.test(trimmedSecondary)) {
-      setStatus("error");
-      setResponseMsg("Please enter a valid secondary email address (e.g. name@example.com).");
-      timeoutRef.current = setTimeout(() => {
-        setStatus("idle");
-        setResponseMsg("");
-      }, 5000);
-      return;
-    }
-
-    setStatus("loading");
-    setResponseMsg("");
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/eb8f00b23a68eb55528e90ae53eb13f9", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: trimmedEmail,
-          secondaryEmail: trimmedSecondary || "N/A",
-          _subject: formData.subject
-            ? `Portfolio Message: ${formData.subject}`
-            : `New Contact Form Message from ${formData.fullName}`,
-          message: formData.message,
-          _captcha: "false",
-          _template: "table",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && (data.success === "true" || data.success === true || response.status === 200)) {
-        setStatus("success");
-        setResponseMsg("Thank you! Your message has been sent successfully to abufattahmdshakib21@gmail.com.");
-        setFormData({
-          fullName: "",
-          email: "",
-          secondaryEmail: "",
-          subject: "",
-          message: "",
-        });
-
-        // Auto close message after 5 seconds
-        timeoutRef.current = setTimeout(() => {
-          setStatus("idle");
-          setResponseMsg("");
-        }, 5000);
-      } else {
-        throw new Error(data.message || "Failed to send email");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setStatus("error");
-      setResponseMsg(
-        "Oops! Something went wrong. You can also send an email directly to abufattahmdshakib21@gmail.com."
-      );
-
-      // Auto close error message after 6 seconds
-      timeoutRef.current = setTimeout(() => {
-        setStatus("idle");
-        setResponseMsg("");
-      }, 6000);
-    }
-  };
+  const {
+    formData,
+    status,
+    setStatus,
+    responseMsg,
+    clearTimer,
+    handleChange,
+    handleSubmit,
+  } = useContactForm();
 
   return (
     <div className="w-full lg:w-[863px] shrink-0 bg-[#0F0F0F] p-6 sm:p-10 flex flex-col justify-center gap-5">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
-        {/* Status Message Notification (Brand #E54F1F BG, Green Text for Success, Red Text for Error) */}
+        {/* Status Message */}
         <AnimatePresence>
           {status === "success" && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              variants={alertVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               className="flex items-center justify-between gap-3 p-4 rounded-xl bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-sm"
             >
               <div className="flex items-center gap-3">
@@ -153,10 +49,10 @@ export default function ContactForm() {
 
           {status === "error" && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              variants={alertVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               className="flex items-center justify-between gap-3 p-4 rounded-xl bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-sm"
             >
               <div className="flex items-center gap-3">

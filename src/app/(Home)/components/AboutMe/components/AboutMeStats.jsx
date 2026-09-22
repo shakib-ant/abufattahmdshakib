@@ -15,7 +15,7 @@ export default function AboutMeStats() {
         {/* Profile Image */}
         <div className="w-full h-[360px] sm:h-auto sm:col-span-6 lg:w-[381px] lg:h-[420px] relative bg-[#111111] overflow-hidden border-b sm:border-b-0 sm:border-r border-[#222222] flex items-end justify-center">
           <Image
-            src="/share/aboutme.svg"
+            src="https://e-commerce-test.sgp1.digitaloceanspaces.com/aboutme/1790099939023-aboutme.svg"
             alt="Profile Showcase"
             fill
             priority

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 // Dot Hook
-export const useHeroDot = (delay = 2000) => {
+export const useHeroDot = (delay = 4300) => {
   const [showDot, setShowDot] = useState(false);
 
   useEffect(() => {

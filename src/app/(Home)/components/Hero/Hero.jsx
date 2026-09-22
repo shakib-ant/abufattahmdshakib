@@ -2,10 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { useHeroDot } from "./utils";
+import ResumeButton from "./components/ResumeButton";
 import "./Hero.css";
 import "./dotBounce.css";
 
@@ -21,7 +20,7 @@ export default function Hero() {
             {/* Profile Image */}
             <div className="relative w-[180px] h-[211px] mm:w-[200px] mm:h-[235px] lm:w-[220px] lm:h-[258px] sm:w-[240px] sm:h-[282px] md:w-[260px] md:h-[305px] lg:w-[270px] lg:h-[317px] 3xl:w-[280px] 3xl:h-[329px] mx-auto -translate-y-[30px] z-50">
               <Image
-                src="/share/Hero2.svg"
+                src="https://e-commerce-test.sgp1.digitaloceanspaces.com/profileHeroImage/1790098305125-Hero2.svg"
                 alt="Abu Fattah Shakib - Profile"
                 fill
                 priority
@@ -60,13 +59,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Resume Button */}
-                <Link
-                  href="#resume"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-fustat font-medium text-sm md:text-base hover:bg-neutral-200 transition-all duration-300 shadow-lg hover:shadow-white/10 hover:scale-105 active:scale-95 w-fit"
-                >
-                  <FileText className="w-4 h-4 text-black" />
-                  <span>View My Resume</span>
-                </Link>
+                <ResumeButton />
               </div>
             </div>
           </div>
@@ -88,7 +81,7 @@ export default function Hero() {
           {/* Profile Image */}
           <div className="relative w-[215px] h-[252px] sm:w-[245px] sm:h-[288px] z-50 mt-[80px] mb-5">
             <Image
-              src="/share/Hero2.svg"
+              src="https://e-commerce-test.sgp1.digitaloceanspaces.com/profileHeroImage/1790098305125-Hero2.svg"
               alt="Abu Fattah Shakib - Profile"
               fill
               priority
@@ -136,13 +129,7 @@ export default function Hero() {
 
           {/* Resume Button */}
           <div className="relative z-10 mb-1">
-            <Link
-              href="#resume"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-fustat font-semibold text-sm hover:bg-neutral-200 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
-            >
-              <FileText className="w-4 h-4 text-black" />
-              <span>View My Resume</span>
-            </Link>
+            <ResumeButton />
           </div>
 
         </div>

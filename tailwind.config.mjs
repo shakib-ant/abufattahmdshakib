@@ -18,6 +18,9 @@ export default {
         fustat: 'var(--font-fustat)',
         bebasnNeue: 'var(--font-bebas-neue)',
         'bebas-neue': 'var(--font-bebas-neue)',
+        syne: 'var(--font-syne)',
+        unbounded: 'var(--font-unbounded)',
+        signature: 'var(--font-signature)',
       },
       colors: {
         background: 'hsl(var(--background))',

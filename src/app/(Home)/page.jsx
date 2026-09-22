@@ -1,18 +1,47 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar/Navbar";
 import Container from "@/components/Container/Container";
-import Hero from "./components/Hero/Hero";
+import Waitlist from "./components/Waitlist/Waitlist";
 import "./components/Hero/Hero.css";
-import AboutMe from "./components/AboutMe/AboutMe";
-import RecentWorks from "./components/RecentWorks/RecentWorks";
-import Toolkit from "./components/Toolkit/Toolkit";
-import CaseStudy from "./components/CaseStudy/CaseStudy";
-import ContactMe from "./components/ContactMe/ContactMe";
+
+// Lazy load Hero and remaining components
+const Hero = dynamic(() => import("./components/Hero/Hero"), { ssr: false });
+const CaseStudy = dynamic(() => import("./components/CaseStudy/CaseStudy"), { ssr: false });
+const AboutMe = dynamic(() => import("./components/AboutMe/AboutMe"), { ssr: false });
+const RecentWorks = dynamic(() => import("./components/RecentWorks/RecentWorks"), { ssr: false });
+const Toolkit = dynamic(() => import("./components/Toolkit/Toolkit"), { ssr: false });
+const ContactMe = dynamic(() => import("./components/ContactMe/ContactMe"), { ssr: false });
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Proactively preload key assets in background during the 3s intro window
+    const imagesToPreload = [
+      "/share/lightImage.png",
+      "/share/Hero2.svg",
+      "/share/shakibLogo.png",
+      "https://e-commerce-test.sgp1.digitaloceanspaces.com/profileHeroImage/1790098305125-Hero2.svg"
+    ];
+
+    imagesToPreload.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white relative flex flex-col pt-[72px] md:pt-[80px]">
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <Waitlist key="waitlist" onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+
       {/* Spotlight Image */}
       <div className="absolute -top-[120px] lg:-top-[243px] left-1/2 -translate-x-1/2 w-full h-[500px] lg:w-[845px] lg:h-[783px] pointer-events-none z-30 flex justify-center">
         {/* Spotlight Image */}

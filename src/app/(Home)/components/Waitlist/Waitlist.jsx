@@ -34,10 +34,10 @@ export default function Waitlist({ onComplete }) {
       className="fixed inset-0 z-[99999] bg-[#0F0F0F] flex flex-col items-center justify-center select-none overflow-hidden"
     >
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center px-[calc((16/375)*100vw)] lg:px-[calc((32/1920)*100vw)]">
+      <div className="relative z-10 flex flex-col items-center px-[calc((12/375)*100vw)] lg:px-[calc((32/1920)*100vw)]">
         <div className="relative inline-block py-[calc((16/375)*100vw)] lg:py-[calc((24/1920)*100vw)]">
           {/* Base Layer: Text is visible from the very beginning in dark gray */}
-          <h1 className="font-signature text-[calc((52/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] text-[#333333] select-none pointer-events-none">
+          <h1 className="font-signature text-[calc((48/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] text-[#333333] select-none pointer-events-none">
             <span className="whitespace-nowrap">Abu Fattah</span>
             <span className="whitespace-nowrap">Shakib</span>
           </h1>
@@ -50,7 +50,7 @@ export default function Waitlist({ onComplete }) {
               duration: 3.0,
               ease: "linear",
             }}
-            className="font-signature text-[calc((52/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] absolute inset-0 py-[calc((16/375)*100vw)] lg:py-[calc((24/1920)*100vw)] select-none pointer-events-none"
+            className="font-signature text-[calc((48/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] absolute inset-0 py-[calc((16/375)*100vw)] lg:py-[calc((24/1920)*100vw)] select-none pointer-events-none"
           >
             {/* Abu Fattah - Pure Solid #D9D9D9 */}
             <span className="text-[#D9D9D9] whitespace-nowrap">Abu Fattah</span>

@@ -12,7 +12,7 @@ export default function SectionHeader({
   secondLine,
   lines,
   children,
-  textSize = "text-[calc((40/375)*100vw)] lg:text-[calc((64/1920)*100vw)]",
+  textSize = "text-[calc((32/375)*100vw)] lg:text-[calc((64/1920)*100vw)]",
   normalColor,
   titleColor,
   highlightColor,

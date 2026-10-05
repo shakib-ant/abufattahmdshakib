@@ -45,8 +45,7 @@ export default function ResumeButton({ className = "" }) {
           </span>
         </span>
 
-        {/* Button Text */}
-        <span className="font-fustat font-semibold text-[calc((18/375)*100vw)] lg:text-[calc((18/1920)*100vw)] leading-none lg:leading-[100%] whitespace-nowrap text-black group-hover:text-white transition-colors duration-700 ease-in-out">
+        <span className="font-fustat font-[600] text-[calc((18/375)*100vw)] lg:text-[calc((18/1920)*100vw)] leading-[100%] tracking-[0] whitespace-nowrap text-black group-hover:text-white transition-colors duration-700 ease-in-out">
           View My Resume
         </span>
 

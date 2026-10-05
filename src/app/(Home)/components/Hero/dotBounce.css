@@ -34,29 +34,29 @@
 /* Drop Mobile */
 @keyframes ball-drop-bounce-mobile {
   0% {
-    transform: translate(-90px, -50px);
+    transform: translate(-60px, -35px);
     opacity: 0;
   }
   4% {
     opacity: 1;
   }
   18% {
-    transform: translate(-70px, -6px);
+    transform: translate(-45px, -5px);
   }
   38% {
-    transform: translate(-50px, -25px);
+    transform: translate(-30px, -16px);
   }
   58% {
-    transform: translate(-35px, -6px);
+    transform: translate(-20px, -4px);
   }
   76% {
-    transform: translate(-22px, -14px);
+    transform: translate(-12px, -8px);
   }
   88% {
-    transform: translate(-12px, -1px);
+    transform: translate(-6px, -1px);
   }
   95% {
-    transform: translate(-5px, -5px);
+    transform: translate(-2px, -3px);
   }
   100% {
     transform: translate(0px, 0px);
@@ -85,7 +85,7 @@
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
   }
   45% {
-    transform: translate(0px, -5px);
+    transform: translate(0px, -3px);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
   90% {

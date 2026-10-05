@@ -35,7 +35,7 @@ function Home() {
     });
   }, []);
   return (
-    <main className="min-h-screen bg-[#0F0F0F] text-white relative flex flex-col pt-[72px] md:pt-[80px]">
+    <main className="min-h-screen bg-[#0F0F0F] text-white relative flex flex-col pt-[calc((72/375)*100vw)] lg:pt-[calc((80/1920)*100vw)]">
       <AnimatePresence mode="wait">
         {isLoading && (
           <Waitlist key="waitlist" onComplete={() => setIsLoading(false)} />
@@ -43,7 +43,7 @@ function Home() {
       </AnimatePresence>
 
       {/* Spotlight Image */}
-      <div className="absolute -top-[120px] lg:-top-[243px] left-1/2 -translate-x-1/2 w-full h-[500px] lg:w-[845px] lg:h-[783px] pointer-events-none z-30 flex justify-center">
+      <div className="absolute -top-[calc((120/375)*100vw)] lg:-top-[calc((243/1920)*100vw)] left-1/2 -translate-x-1/2 w-full h-[calc((500/375)*100vw)] lg:w-[calc((845/1920)*100vw)] lg:h-[calc((783/1920)*100vw)] pointer-events-none z-40 flex justify-center">
         {/* Spotlight Image */}
         <Image
           src="/share/lightImage.png"
@@ -56,7 +56,7 @@ function Home() {
 
         {/* Falling Dust */}
         <div
-          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full h-[480px] lg:w-[700px] lg:h-[700px] z-40 overflow-hidden"
+          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full h-[calc((480/375)*100vw)] lg:w-[calc((700/1920)*100vw)] lg:h-[calc((700/1920)*100vw)] z-40 overflow-hidden"
           style={{
             clipPath: "polygon(46% 0%, 54% 0%, 98% 100%, 2% 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 12%, black 60%, transparent 95%)",

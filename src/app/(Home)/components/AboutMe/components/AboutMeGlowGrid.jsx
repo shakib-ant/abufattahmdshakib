@@ -1,20 +1,28 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Plus } from "lucide-react";
 
 export default function AboutMeGlowGrid() {
   return (
-    <>
-      {/* Glow Effect */}
-      <div
-        className="absolute pointer-events-none rounded-full z-0 left-1/2 -translate-x-1/2 top-[80px] sm:top-[170px] w-[260px] sm:w-[560px] h-[240px] sm:h-[519px] bg-[#E25822] blur-[70px] sm:blur-[120px] opacity-60 sm:opacity-100"
-      />
+    <div className="absolute top-[calc((30/375)*100vw)] lg:top-[calc((40/1920)*100vw)] left-1/2 -translate-x-1/2 w-[calc((366/375)*100vw)] lg:w-[calc((696/1920)*100vw)] h-[calc((339/375)*100vw)] lg:h-[calc((456/1920)*100vw)] pointer-events-none z-10">
+      {/* Background Glow Image */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <Image
+          src="https://e-commerce-test.sgp1.digitaloceanspaces.com/herobgiamgenot/1791212464780-BGIMAGE.png"
+          alt="About Me Background Glow"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-center select-none"
+        />
+      </div>
 
-      {/* Plus Grid */}
-      <div className="absolute top-[90px] sm:top-[155px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3.5 pointer-events-none z-0 select-none scale-75 sm:scale-100">
+      {/* Plus Grid on Top of Image */}
+      <div className="absolute top-[calc((36/375)*100vw)] lg:top-[calc((48/1920)*100vw)] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)] z-20 select-none">
         {/* Layer 1 */}
-        <div className="flex items-center gap-4 sm:gap-8">
+        <div className="flex items-center gap-[calc((12/375)*100vw)] lg:gap-[calc((40/1920)*100vw)]">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={`about-l1-${i}`}
@@ -24,13 +32,13 @@ export default function AboutMeGlowGrid() {
                 animationDuration: `${3.2 + (i % 3) * 0.8}s`,
               }}
             >
-              <Plus className="w-2 h-2 text-[#E25822]" />
+              <Plus className="w-[calc((6/375)*100vw)] lg:w-[calc((7/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((7/1920)*100vw)] text-[#E54F1F]" />
             </div>
           ))}
         </div>
 
         {/* Layer 2 */}
-        <div className="flex items-center gap-4 sm:gap-8">
+        <div className="flex items-center gap-[calc((16/375)*100vw)] lg:gap-[calc((40/1920)*100vw)]">
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={`about-l2-${i}`}
@@ -40,13 +48,13 @@ export default function AboutMeGlowGrid() {
                 animationDuration: `${2.8 + ((i + 1) % 4) * 0.7}s`,
               }}
             >
-              <Plus className="w-2 h-2 text-[#E25822]" />
+              <Plus className="w-[calc((6/375)*100vw)] lg:w-[calc((7/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((7/1920)*100vw)] text-[#E54F1F]" />
             </div>
           ))}
         </div>
 
         {/* Layer 3 */}
-        <div className="flex items-center gap-4 sm:gap-8">
+        <div className="flex items-center gap-[calc((20/375)*100vw)] lg:gap-[calc((40/1920)*100vw)]">
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={`about-l3-${i}`}
@@ -56,11 +64,11 @@ export default function AboutMeGlowGrid() {
                 animationDuration: `${3.5 + ((i + 3) % 3) * 0.9}s`,
               }}
             >
-              <Plus className="w-2 h-2 text-[#E25822]" />
+              <Plus className="w-[calc((6/375)*100vw)] lg:w-[calc((7/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((7/1920)*100vw)] text-[#E54F1F]" />
             </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -4,16 +4,20 @@
     top: -120px;
     opacity: 0;
   }
+
   3% {
     opacity: 1;
   }
+
   77% {
     opacity: 1;
   }
+
   80% {
     top: 100%;
     opacity: 0;
   }
+
   100% {
     top: 100%;
     opacity: 0;
@@ -21,5 +25,5 @@
 }
 
 .animate-border-beam {
-  animation: border-beam-sweep 25s linear infinite;
+  animation: border-beam-sweep 30s linear infinite;
 }

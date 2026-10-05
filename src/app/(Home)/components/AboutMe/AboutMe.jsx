@@ -10,15 +10,15 @@ import "./AboutMe.css";
 
 export default function AboutMe() {
   return (
-    <section id="about" className="relative w-full pt-0 lg:pt-[20px] z-20 flex flex-col items-center">
+    <section id="about" className="relative w-full pt-[calc((40/375)*100vw)] lg:pt-0  z-20 flex flex-col items-center overflow-hidden">
       {/* Glow Grid */}
       <AboutMeGlowGrid />
 
       {/* Section Header */}
-      <SectionHeader text="ABOUT ME" className="mb-10 sm:mb-14" />
+      <SectionHeader text="ABOUT ME" className="mb-[calc((36/375)*100vw)] lg:mb-[calc((100/1920)*100vw)] relative z-40" />
 
       {/* Background Strip */}
-      <div className="w-full bg-[#111111] border-y border-[#222222] relative z-10 h-auto lg:h-[691px]">
+      <div className="w-full bg-[#0F0F0F] border-y border-[#1F1F1F] relative z-20 h-auto lg:h-[calc((693/1920)*100vw)]">
         {/* Content Grid */}
         <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column */}

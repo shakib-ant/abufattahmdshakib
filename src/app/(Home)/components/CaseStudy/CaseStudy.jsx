@@ -28,13 +28,13 @@ export default function CaseStudy() {
 
   return (
     <section
-      className={`relative w-screen left-1/2 -translate-x-1/2 h-[570px] sm:h-[640px] lg:h-[calc((800/1920)*100vw)] lg:max-h-[800px] z-20 my-[60px] sm:mb-[80px] bg-[#0F0F0F] overflow-hidden ${
+      className={`relative w-screen left-1/2 -translate-x-1/2 h-[calc((741/375)*100vw)] lg:h-[calc((800/1920)*100vw)] z-20 lg:my-[calc((80/1920)*100vw)] bg-[#0F0F0F] overflow-hidden ${
         selectedProject ? "is-paused" : ""
       }`}
       id="casestudy"
     >
       {/* Background Image */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] lg:w-[2015px] 3xl:w-[2250px] h-[570px] sm:h-[640px] lg:h-[655px] 3xl:h-[800px] pointer-events-none z-0">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc((2200/375)*100vw)] lg:w-[calc((2250/1920)*100vw)] h-[calc((741/375)*100vw)] lg:h-[calc((655/1920)*100vw)] pointer-events-none z-0">
         <Image
           src="/share/casestadyBgIMage.png"
           alt="Case Study Background"
@@ -45,24 +45,24 @@ export default function CaseStudy() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="block lg:hidden relative w-full h-[570px] sm:h-[640px] z-20 overflow-hidden flex flex-col justify-center py-2">
-        {/* Mobile Overlay */}
+      <div className="block lg:hidden relative w-full h-[calc((741/375)*100vw)] z-20 overflow-hidden flex flex-col justify-between">
+        {/* Top Overlay */}
         <div
           className="absolute inset-0 pointer-events-none z-30"
           style={{
             background:
-              "linear-gradient(180deg, #0F0F0F 3.56%, rgba(15, 15, 15, 0.9) 11.28%, rgba(15, 15, 15, 0) 54.38%, rgba(15, 15, 15, 0.9) 92.28%, #0F0F0F 100%)",
+              "linear-gradient(180deg, #0F0F0F 0%, rgba(15, 15, 15, 0.3) 2%, transparent 8%, transparent 92%, rgba(15, 15, 15, 0.3) 98%, #0F0F0F 100%)",
           }}
         />
 
-        <div className="w-full flex flex-col gap-[20px] justify-center relative z-20 my-auto casestudy-grid-mask overflow-hidden">
+        <div className="w-full flex flex-col gap-[calc((16/375)*100vw)] justify-between relative z-20 h-full overflow-hidden">
           {/* Row 1 */}
           <div className="overflow-hidden w-full relative">
-            <div className="animate-marquee-left flex flex-row gap-[20px] w-max py-1">
+            <div className="animate-marquee-left flex flex-row gap-[calc((16/375)*100vw)] w-max">
               {doubledCol1.map((project, idx) => (
                 <div
                   key={`m-r1-${project.id}-${idx}`}
-                  className="w-[250px] sm:w-[300px] shrink-0"
+                  className="w-[calc((358/375)*100vw)] shrink-0"
                 >
                   <CaseStudyCard project={project} onClick={handleCardClick} />
                 </div>
@@ -72,11 +72,11 @@ export default function CaseStudy() {
 
           {/* Row 2 */}
           <div className="overflow-hidden w-full relative">
-            <div className="animate-marquee-right flex flex-row gap-[20px] w-max py-1">
+            <div className="animate-marquee-right flex flex-row gap-[calc((16/375)*100vw)] w-max">
               {doubledCol2.map((project, idx) => (
                 <div
                   key={`m-r2-${project.id}-${idx}`}
-                  className="w-[250px] sm:w-[300px] shrink-0"
+                  className="w-[calc((358/375)*100vw)] shrink-0"
                 >
                   <CaseStudyCard project={project} onClick={handleCardClick} />
                 </div>
@@ -86,11 +86,11 @@ export default function CaseStudy() {
 
           {/* Row 3 */}
           <div className="overflow-hidden w-full relative">
-            <div className="animate-marquee-left flex flex-row gap-[20px] w-max py-1">
+            <div className="animate-marquee-left flex flex-row gap-[calc((16/375)*100vw)] w-max">
               {doubledCol3.map((project, idx) => (
                 <div
                   key={`m-r3-${project.id}-${idx}`}
-                  className="w-[250px] sm:w-[300px] shrink-0"
+                  className="w-[calc((358/375)*100vw)] shrink-0"
                 >
                   <CaseStudyCard project={project} onClick={handleCardClick} />
                 </div>
@@ -101,8 +101,8 @@ export default function CaseStudy() {
       </div>
 
       {/* Desktop Layout */}
-      <div className="hidden lg:flex relative h-full w-full flex-col items-center justify-center overflow-hidden ">
-        {/* Desktop Overlay */}
+      <div className="hidden lg:flex relative h-full w-full flex-col items-center justify-center overflow-hidden">
+        {/* Top Overlay */}
         <div
           className="absolute inset-0 pointer-events-none z-30"
           style={{
@@ -112,11 +112,11 @@ export default function CaseStudy() {
         />
 
         {/* Grid Container */}
-        <div className="w-full px-[19px] flex-1 h-full overflow-hidden relative z-10 casestudy-grid-mask">
-          <div className="grid grid-cols-3 gap-6 sm:gap-8 h-full w-full">
+        <div className="w-full px-[calc((19/1920)*100vw)] flex-1 h-full overflow-hidden relative z-10 casestudy-grid-mask">
+          <div className="grid grid-cols-3 gap-[calc((30.5/1920)*100vw)] h-full w-full">
             {/* Column 1 */}
             <div className="overflow-hidden h-full relative">
-              <div className="animate-marquee-down flex flex-col gap-6 sm:gap-8">
+              <div className="animate-marquee-down flex flex-col gap-[calc((30.5/1920)*100vw)]">
                 {doubledCol1.map((project, idx) => (
                   <CaseStudyCard
                     key={`d-c1-${project.id}-${idx}`}
@@ -129,7 +129,7 @@ export default function CaseStudy() {
 
             {/* Column 2 */}
             <div className="overflow-hidden h-full relative">
-              <div className="animate-marquee-up flex flex-col gap-6 sm:gap-8">
+              <div className="animate-marquee-up flex flex-col gap-[calc((30.5/1920)*100vw)]">
                 {doubledCol2.map((project, idx) => (
                   <CaseStudyCard
                     key={`d-c2-${project.id}-${idx}`}
@@ -142,7 +142,7 @@ export default function CaseStudy() {
 
             {/* Column 3 */}
             <div className="overflow-hidden h-full relative">
-              <div className="animate-marquee-down flex flex-col gap-6 sm:gap-8">
+              <div className="animate-marquee-down flex flex-col gap-[calc((30.5/1920)*100vw)]">
                 {doubledCol3.map((project, idx) => (
                   <CaseStudyCard
                     key={`d-c3-${project.id}-${idx}`}
@@ -156,7 +156,7 @@ export default function CaseStudy() {
         </div>
       </div>
 
-      {/* Card Overlay */}
+      {/* Card Modal */}
       {mounted &&
         createPortal(
           <AnimatePresence>
@@ -167,14 +167,14 @@ export default function CaseStudy() {
                 animate="animate"
                 exit="exit"
                 onClick={handleCloseModal}
-                className="fixed inset-0 z-[999999] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
+                className="fixed inset-0 z-[999999] bg-black/85 backdrop-blur-md flex items-center justify-center p-[calc((16/375)*100vw)] lg:p-[calc((32/1920)*100vw)] cursor-pointer"
               >
                 <motion.div
                   variants={modalContentVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="relative w-full max-w-[440px] sm:max-w-[560px] aspect-[607/384] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-[0_0_35px_rgba(226,88,34,0.4)] border border-[#E25822]/40 cursor-pointer"
+                  className="relative w-[calc((358/375)*100vw)] lg:w-[calc((607/1920)*100vw)] h-[calc((226/375)*100vw)] lg:h-[calc((384/1920)*100vw)] rounded-[calc((6.27/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] overflow-hidden border border-[#E25822]/40 cursor-pointer"
                 >
                   <Image
                     src={selectedProject.image}

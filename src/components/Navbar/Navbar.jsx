@@ -27,71 +27,73 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full h-[72px] md:h-[80px] transition-all duration-300 px-4 flex items-center ${
-        mobileMenuOpen
-          ? "z-[100] bg-[#0F0F0F] border-b border-[#1F1F1F]"
-          : isScrolled
+      className={`fixed top-0 left-0 w-full h-[calc((72/375)*100vw)] lg:h-[calc((80/1920)*100vw)] transition-all duration-150 flex items-center ${mobileMenuOpen
+        ? "z-[100] bg-[#0F0F0F] border-b border-[#1F1F1F]"
+        : isScrolled
           ? "z-50 bg-[#E54F1F]/15 backdrop-blur-md border-b border-[#E54F1F]/40"
           : "z-20 bg-transparent border-b border-[#1F1F1F]/60"
-      }`}
+        }`}
     >
-      <div className="max-w-[1439px] mx-auto w-full">
+      <div className="w-full lg:w-[calc((1439/1920)*100vw)] mx-auto px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)]">
         {/* Desktop Navbar */}
-        <nav className="hidden md:flex w-full h-full items-center justify-between">
-          {/* Nav links */}
-          <div className="flex items-center gap-8 md:gap-12">
+        <nav className="hidden lg:flex w-full h-full items-center justify-between">
+          {/* Nav links & Logo */}
+          <div className="flex items-center gap-[calc((60/1920)*100vw)]">
             <Link href="/" className="flex items-center">
               <Image
                 src="/share/shakibLogo.png"
                 alt="Shakib Logo"
                 width={44}
                 height={44}
-                className="lg:w-[calc((40/1920)*100vw)] lg:h-[calc((40/1440)*100vw)] object-cover hover:opacity-80 transition-opacity"
+                className="w-10 h-10 lg:w-[calc((40/1920)*100vw)] lg:h-[calc((40/1920)*100vw)] object-contain hover:opacity-80 transition-opacity"
               />
             </Link>
-            {navLinks.map((link) => {
-              const isActive = activeNav === link.href;
-              const isDownload = link.download;
 
-              if (isDownload) {
+            {/* Menu Container: width: 279, height: 15, gap: 60 */}
+            <div className="flex items-center lg:w-[calc((279/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:gap-[calc((60/1920)*100vw)]">
+              {navLinks.map((link) => {
+                const isActive = activeNav === link.href;
+                const isDownload = link.download;
+
+                if (isDownload) {
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      download={link.fileName || true}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 text-neutral-400 hover:text-white lg:w-[calc((44/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap"
+                    >
+                      <span>{link.label}</span>
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] lg:h-[calc((2/1920)*100vw)] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                    </a>
+                  );
+                }
+
                 return (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
-                    download={link.fileName || true}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative group py-1 text-sm md:text-base font-fustat inline-flex flex-col items-center transition-colors duration-200 text-neutral-400 hover:text-white"
+                    onClick={() => handleNavClick(link.href)}
+                    className={`relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 lg:w-[calc((44/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap ${isActive ? "text-white font-medium" : "text-neutral-400"
+                      }`}
                   >
                     <span>{link.label}</span>
-                    <span className="absolute bottom-1 left-0 w-full h-[2px] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out shadow-[0_0_8px_rgba(229,79,31,0.7)]" />
-                  </a>
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] lg:h-[calc((2/1920)*100vw)] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+
+                    {/* Active Indicator Dot */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavDot"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        className="absolute -bottom-1.5 lg:-bottom-[calc((6/1920)*100vw)] left-1/2 -translate-x-1/2 w-[5px] h-[5px] lg:w-[calc((5/1920)*100vw)] lg:h-[calc((5/1920)*100vw)] rounded-full bg-[#E54F1F]"
+                      />
+                    )}
+                  </Link>
                 );
-              }
-
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`relative group py-1 text-sm md:text-base font-fustat inline-flex flex-col items-center transition-colors duration-200 ${
-                    isActive ? "text-white font-medium" : "text-neutral-400"
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  <span className="absolute bottom-1 left-0 w-full h-[2px] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out shadow-[0_0_8px_rgba(229,79,31,0.7)]" />
-
-                  {/* Active Indicator: 5px rounded dot with #E54F1F glow shadow */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavDot"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]"
-                    />
-                  )}
-                </Link>
-              );
-            })}
+              })}
+            </div>
           </div>
 
           {/* Contact Button */}
@@ -103,7 +105,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Navbar */}
-        <nav className="flex md:hidden items-center justify-between h-[72px] px-[20px] w-full">
+        <nav className="flex lg:hidden items-center justify-between h-[calc((72/375)*100vw)] w-full">
           {/* Logo Image */}
           <Link href="/" className="flex items-center">
             <Image
@@ -111,7 +113,7 @@ export default function Navbar() {
               alt="Shakib Logo"
               width={40}
               height={40}
-              className="w-10 h-10 object-contain"
+              className="w-[calc((40/375)*100vw)] h-[calc((40/375)*100vw)] object-contain"
             />
           </Link>
 
@@ -137,15 +139,15 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="fixed inset-0 top-0 left-0 w-screen h-screen h-[100dvh] min-h-screen bg-[#0F0F0F] z-[100] flex flex-col overflow-hidden md:hidden"
+              className="fixed inset-0 top-0 left-0 w-screen h-screen h-[100dvh] bg-[#0F0F0F] z-[100] flex flex-col overflow-hidden lg:hidden"
               style={{
                 background: "linear-gradient(180deg, #3D1609 0%, #241009 12%, #160B07 25%, #160B07 75%, #241009 88%, #3D1609 100%)",
               }}
             >
               {/* Top Header */}
-              <div className="w-full border-b border-[#1F1F1F] px-4 shrink-0 z-10">
-                <div className="max-w-[1439px] mx-auto w-full">
-                  <div className="flex items-center justify-between h-[72px] px-[20px] w-full">
+              <div className="w-full border-b border-[#1F1F1F] px-[calc((16/375)*100vw)] shrink-0 z-10">
+                <div className="w-full">
+                  <div className="flex items-center justify-between h-[72px] w-full">
                     <Link
                       href="/"
                       onClick={() => setMobileMenuOpen(false)}
@@ -156,7 +158,7 @@ export default function Navbar() {
                         alt="Shakib Logo"
                         width={40}
                         height={40}
-                        className="w-10 h-10 object-contain"
+                        className="w-[calc((40/375)*100vw)] h-[calc((40/375)*100vw)] object-contain"
                       />
                     </Link>
 
@@ -181,9 +183,9 @@ export default function Navbar() {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="flex flex-col justify-center items-center w-full flex-1 my-auto px-6 py-4 gap-16 z-10 overflow-y-auto"
+                className="flex flex-col justify-center items-center w-full flex-1 my-auto px-[calc((24/375)*100vw)] py-[calc((16/375)*100vw)] gap-[calc((64/375)*100vw)] z-10 overflow-y-auto"
               >
-                <motion.ul variants={navContainerVariants} className="flex flex-col items-center justify-center w-full max-w-[340px]">
+                <motion.ul variants={navContainerVariants} className="flex flex-col items-center justify-center w-full w-[calc((340/375)*100vw)]">
                   {navLinks.map((link, index) => {
                     const isMiddle = index === 1;
                     const isActive = activeNav === link.href;
@@ -192,16 +194,15 @@ export default function Navbar() {
                       <motion.li
                         key={link.label}
                         variants={navItemVariants}
-                        className={`w-full py-5 text-center ${
-                          isMiddle ? "relative border-t border-b border-[#1F1F1F] overflow-hidden" : ""
-                        }`}
+                        className={`w-full py-[calc((20/375)*100vw)] text-center ${isMiddle ? "relative border-t border-b border-[#1F1F1F] overflow-hidden" : ""
+                          }`}
                       >
                         {isMiddle && (
                           <>
                             {/* Top Beam */}
-                            <div className="animate-horizontal-border-beam top-0" style={{ animationDelay: "2s" }} />
+                            <div className="animate-horizontal-border-beam top-0" style={{ animationDelay: "0.1s" }} />
                             {/* Bottom Beam */}
-                            <div className="animate-horizontal-border-beam bottom-0 top-auto" style={{ animationDelay: "4.5s" }} />
+                            <div className="animate-horizontal-border-beam-bottom bottom-0 top-auto" style={{ animationDelay: "1.4s" }} />
                           </>
                         )}
                         {isDownload ? (
@@ -211,9 +212,8 @@ export default function Navbar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 text-white hover:text-[#E54F1F] ${
-                              isMiddle ? "relative z-10" : ""
-                            }`}
+                            className={`font-extrabold text-[calc((24/375)*100vw)] active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-[calc((8/375)*100vw)] text-white hover:text-[#E54F1F] ${isMiddle ? "relative z-10" : ""
+                              }`}
                           >
                             <span>{link.label}</span>
                           </a>
@@ -224,13 +224,12 @@ export default function Navbar() {
                               handleNavClick(link.href);
                               setMobileMenuOpen(false);
                             }}
-                            className={`font-extrabold text-2xl sm:text-3xl active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-2 ${
-                              isActive ? "text-[#E54F1F]" : "text-white"
-                            } ${isMiddle ? "relative z-10" : ""}`}
+                            className={`font-extrabold text-[calc((24/375)*100vw)] active:scale-95 transition-transform duration-150 inline-flex flex-col items-center gap-[calc((8/375)*100vw)] ${isActive ? "text-[#E54F1F]" : "text-white"
+                              } ${isMiddle ? "relative z-10" : ""}`}
                           >
                             <span>{link.label}</span>
                             {isActive && (
-                              <span className="w-[6px] h-[6px] rounded-full bg-[#E54F1F] shadow-[0_0_8px_#E54F1F,0_0_12px_#E54F1F]" />
+                              <span className="w-[calc((6/375)*100vw)] h-[calc((6/375)*100vw)] rounded-full bg-[#E54F1F]" />
                             )}
                           </Link>
                         )}
@@ -240,7 +239,7 @@ export default function Navbar() {
                 </motion.ul>
 
                 {/* Social Icons */}
-                <motion.div variants={navContainerVariants} className="flex items-center justify-center gap-6 pt-4 pb-4 shrink-0">
+                <motion.div variants={navContainerVariants} className="flex items-center justify-center gap-[calc((24/375)*100vw)] pt-[calc((16/375)*100vw)] pb-[calc((16/375)*100vw)] shrink-0">
                   {socialLinks.map((social) => (
                     <motion.a
                       key={social.title}
@@ -256,7 +255,7 @@ export default function Navbar() {
                         alt={social.title}
                         width={48}
                         height={48}
-                        className="w-12 h-12 object-contain"
+                        className="w-[calc((48/375)*100vw)] h-[calc((48/375)*100vw)] object-contain"
                       />
                     </motion.a>
                   ))}

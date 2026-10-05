@@ -5,12 +5,10 @@ import React, { useState, useEffect, useRef } from "react";
 // Star Icon
 export const FourPointStar = () => (
   <svg
-    width="20"
-    height="20"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="text-[#E25822] shrink-0 mt-1"
+    className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-[#E25822] shrink-0 mt-[calc((3/375)*100vw)] lg:mt-[calc((4/1920)*100vw)]"
   >
     <path
       d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
@@ -68,7 +66,7 @@ export function CountUpItem({ targetNumber, suffix = "+" }) {
   return (
     <span
       ref={containerRef}
-      className="font-fustat text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#E25822] leading-none shrink-0"
+      className="font-fustat text-[calc((32/375)*100vw)] lg:text-[calc((54/1920)*100vw)] font-bold text-[#E25822] leading-none shrink-0"
     >
       {count}
       {suffix}

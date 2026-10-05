@@ -54,14 +54,41 @@
   }
 }
 
+@keyframes menu-horizontal-border-sweep-bottom {
+  0% {
+    left: -80px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
 .animate-horizontal-border-beam {
   position: absolute;
   width: 80px;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, #E25822 50%, transparent 100%);
-  box-shadow: 0 0 2px rgba(226, 88, 34, 0.6);
-  animation: menu-horizontal-border-sweep 5s linear infinite;
-  animation-delay: 2s;
+  opacity: 0;
+  animation: menu-horizontal-border-sweep 2.5s linear infinite;
+  animation-fill-mode: backwards;
+  pointer-events: none;
+}
+
+.animate-horizontal-border-beam-bottom {
+  position: absolute;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #E25822 50%, transparent 100%);
+  opacity: 0;
+  animation: menu-horizontal-border-sweep-bottom 2.5s linear infinite;
   animation-fill-mode: backwards;
   pointer-events: none;
 }

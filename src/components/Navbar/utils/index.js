@@ -7,15 +7,15 @@ export const overlayVariants = {
   hidden: {
     opacity: 0,
     transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.3,
+      ease: "easeInOut",
     },
   },
   visible: {
     opacity: 1,
     transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.35,
+      ease: "easeInOut",
     },
   },
 };
@@ -24,17 +24,17 @@ export const navContainerVariants = {
   hidden: {
     opacity: 0,
     transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.08,
+      duration: 0.25,
+      ease: "easeInOut",
+      staggerChildren: 0.04,
       staggerDirection: -1,
     },
   },
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.65,
-      staggerChildren: 0.12,
+      delayChildren: 0.1,
+      staggerChildren: 0.06,
     },
   },
 };
@@ -42,11 +42,11 @@ export const navContainerVariants = {
 export const navItemVariants = {
   hidden: {
     opacity: 0,
-    y: -16,
+    y: -10,
     scale: 0.96,
     transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.25,
+      ease: "easeInOut",
     },
   },
   visible: {
@@ -54,7 +54,7 @@ export const navItemVariants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 1.3,
+      duration: 0.4,
       ease: [0.16, 1, 0.3, 1],
     },
   },
@@ -102,8 +102,8 @@ export const useNavbar = (links = []) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Sticky Glass
-      if (window.scrollY > 0) {
+      // Glass Effect
+      if (window.scrollY > 5) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);

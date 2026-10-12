@@ -1,14 +1,16 @@
 /* Glassy Plus Pulse Animations - Soft #E54F1F Color */
 @keyframes about-plus-pulse-uniform {
   0% {
-    transform: scale(0.85);
-    opacity: 0;
-    filter: drop-shadow(0 0 1px rgba(229, 79, 31, 0.1));
+    transform: scale(0.82) translateZ(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.18) translateZ(0);
+    opacity: 1;
   }
   100% {
-    transform: scale(1.15);
-    opacity: 0.5;
-    filter: drop-shadow(0 0 3px rgba(229, 79, 31, 0.35));
+    transform: scale(0.82) translateZ(0);
+    opacity: 0.3;
   }
 }
 
@@ -16,10 +18,12 @@
 .about-plus-pulse-2,
 .about-plus-pulse-3 {
   animation-name: about-plus-pulse-uniform;
+  animation-duration: 3s;
   animation-iteration-count: infinite !important;
   animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -40,20 +44,22 @@
 /* Ripple Animation */
 @keyframes water-ripple {
   0% {
-    transform: scale(0.4);
-    opacity: 0.75;
+    transform: scale(0.4) translateZ(0);
+    opacity: 0.85;
   }
-
   60% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
-
   100% {
-    transform: scale(2.5);
+    transform: scale(2.6) translateZ(0);
     opacity: 0;
   }
 }
 
 .water-ripple-effect {
-  animation: water-ripple 3.0s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  animation: water-ripple 2.8s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  transform-origin: center;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

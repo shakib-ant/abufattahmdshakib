@@ -19,7 +19,7 @@ export default function SectionHeader({
   className = "",
   as: Component = "h2",
 }) {
-  // Color resolution: base color #D9D9D9, primary/highlight color #E54F1F
+  // Color resolution
   const defaultNormalColor = normalColor || "text-[#D9D9D9]";
   const defaultHighlightColor = highlightColor || titleColor || "text-[#E54F1F]";
 
@@ -48,7 +48,7 @@ export default function SectionHeader({
     );
   }
 
-  // Explicit two lines passed via firstLine & secondLine
+  // Explicit two lines passed
   if (firstLine && secondLine) {
     return (
       <div className={`relative z-10 text-center ${className}`}>
@@ -85,7 +85,7 @@ export default function SectionHeader({
   const renderContent = () => {
     if (!fullText) return null;
 
-    // Multi-line string with newline (e.g. "LET’S TURN YOUR\nIDEA INTO REALITY")
+    // Multi-line string with newline
     if (fullText.includes("\n")) {
       const splitLines = fullText.split("\n");
       return (
@@ -117,7 +117,7 @@ export default function SectionHeader({
       }
     }
 
-    // Single-line title (e.g. "ABOUT ME") -> pure #E54F1F
+    // Single-line title
     return <span {...highlightColorProps}>{fullText}</span>;
   };
 

@@ -20,7 +20,7 @@ export default function AboutMe() {
       {/* Background Strip */}
       <div className="w-full bg-[#0F0F0F] border-y border-[#1F1F1F] relative z-20 h-auto lg:h-[calc((693/1920)*100vw)]">
         {/* Content Grid */}
-        <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12">
+        <div className="w-full h-auto lg:h-full grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column */}
           <AboutMeTabs />
 

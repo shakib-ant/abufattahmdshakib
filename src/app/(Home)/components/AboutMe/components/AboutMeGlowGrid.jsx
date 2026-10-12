@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 
 export default function AboutMeGlowGrid() {
   return (
-    <div className="absolute top-[calc((30/375)*100vw)] lg:top-[calc((40/1920)*100vw)] left-1/2 -translate-x-1/2 w-[calc((366/375)*100vw)] lg:w-[calc((696/1920)*100vw)] h-[calc((339/375)*100vw)] lg:h-[calc((456/1920)*100vw)] pointer-events-none z-10">
+    <div className="absolute top-[calc((32/375)*100vw)] lg:top-[calc((40/1920)*100vw)] left-1/2 -translate-x-1/2 w-[calc((366/375)*100vw)] lg:w-[calc((696/1920)*100vw)] h-[calc((339/375)*100vw)] lg:h-[calc((456/1920)*100vw)] pointer-events-none z-10">
       {/* Background Glow Image */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
@@ -20,7 +20,7 @@ export default function AboutMeGlowGrid() {
       </div>
 
       {/* Plus Grid on Top of Image */}
-      <div className="absolute top-[calc((36/375)*100vw)] lg:top-[calc((48/1920)*100vw)] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)] z-20 select-none">
+      <div className="absolute top-[calc((40/375)*100vw)] lg:top-[calc((48/1920)*100vw)] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)] z-20 select-none">
         {/* Layer 1 */}
         <div className="flex items-center gap-[calc((12/375)*100vw)] lg:gap-[calc((40/1920)*100vw)]">
           {Array.from({ length: 6 }).map((_, i) => (

@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export default function Waitlist({ onComplete }) {
   useEffect(() => {
-    // Disable page scroll during waitlist screen
+    // Disable page
     document.body.style.overflow = "hidden";
 
-    // As soon as 3s color fill completes, slide screen down immediately
+    // As soon as 3s
     const timer = setTimeout(() => {
       if (onComplete) {
         onComplete();
@@ -36,13 +36,13 @@ export default function Waitlist({ onComplete }) {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center px-[calc((12/375)*100vw)] lg:px-[calc((32/1920)*100vw)]">
         <div className="relative inline-block py-[calc((16/375)*100vw)] lg:py-[calc((24/1920)*100vw)]">
-          {/* Base Layer: Text is visible from the very beginning in dark gray */}
+          {/* Base Layer */}
           <h1 className="font-signature text-[calc((48/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] text-[#333333] select-none pointer-events-none">
             <span className="whitespace-nowrap">Abu Fattah</span>
             <span className="whitespace-nowrap">Shakib</span>
           </h1>
 
-          {/* Top Layer: Smooth 3-Second Constant Linear Color Fill */}
+          {/* Top Layer */}
           <motion.h1
             initial={{ clipPath: "inset(0 100% 0 0)" }}
             animate={{ clipPath: "inset(0 0% 0 0)" }}
@@ -52,10 +52,10 @@ export default function Waitlist({ onComplete }) {
             }}
             className="font-signature text-[calc((48/375)*100vw)] lg:text-[calc((128/1920)*100vw)] font-normal text-center flex flex-wrap items-center justify-center gap-x-[calc((16/375)*100vw)] lg:gap-x-[calc((24/1920)*100vw)] leading-[calc((65/375)*100vw)] lg:leading-[calc((160/1920)*100vw)] absolute inset-0 py-[calc((16/375)*100vw)] lg:py-[calc((24/1920)*100vw)] select-none pointer-events-none"
           >
-            {/* Abu Fattah - Pure Solid #D9D9D9 */}
+            {/* Abu Fattah - Pure Solid */}
             <span className="text-[#D9D9D9] whitespace-nowrap">Abu Fattah</span>
 
-            {/* Shakib - Pure Solid #E25822 */}
+            {/* Shakib - Pure Solid */}
             <span className="text-[#E25822] whitespace-nowrap">Shakib</span>
           </motion.h1>
         </div>

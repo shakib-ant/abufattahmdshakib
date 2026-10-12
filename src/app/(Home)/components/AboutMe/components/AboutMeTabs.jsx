@@ -9,42 +9,42 @@ export default function AboutMeTabs() {
   const { activeTab, setActiveTab } = useAboutTabs("experience");
 
   const renderList = (data) => (
-    <div className="p-[calc((16/375)*100vw)] lg:p-[calc((32/1920)*100vw)] flex flex-col gap-[calc((20/375)*100vw)] lg:gap-[calc((32/1920)*100vw)] w-full">
+    <div className="px-[calc((10/375)*100vw)] lg:px-[calc((30/1920)*100vw)] pt-[calc((25/375)*100vw)] lg:pt-[calc((40/1920)*100vw)] pb-[calc((36/375)*100vw)] lg:pb-[calc((20/1920)*100vw)] flex flex-col gap-[calc((24/375)*100vw)] lg:gap-[calc((44/1920)*100vw)] w-full">
       {data.map((item) => (
-        <div key={item.id} className="flex gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)] items-start">
+        <div key={item.id} className="flex gap-[calc((12/375)*100vw)] lg:gap-[calc((32/1920)*100vw)] items-start">
           <FourPointStar />
 
           <div className="flex-1 flex flex-col gap-[calc((6/375)*100vw)] lg:gap-[calc((8/1920)*100vw)]">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-[calc((4/375)*100vw)] lg:gap-[calc((16/1920)*100vw)]">
-              <h3 className="font-fustat text-[calc((14/375)*100vw)] lg:text-[calc((20/1920)*100vw)] font-semibold text-[#F0F0F0] leading-snug">
+            <div className="flex flex-row justify-between items-start gap-[calc((4/375)*100vw)] lg:gap-[calc((16/1920)*100vw)] mb-[calc((2/375)*100vw)] lg:mb-[calc((6/1920)*100vw)]">
+              <h3 className="font-fustat text-[calc((16/375)*100vw)] lg:text-[calc((24/1920)*100vw)] font-[500] text-[#D9D9D9] leading-[130%]">
                 {item.role}
               </h3>
-              <span className="font-fustat text-[calc((11/375)*100vw)] lg:text-[calc((14/1920)*100vw)] text-[#E25822]/90 lg:text-[#808080] shrink-0 font-medium">
+              <span className="font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((18/1920)*100vw)] text-[#999999] shrink-0 font-[400] leading-[130%]">
                 {item.period}
               </span>
             </div>
 
-            <p className="font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((14/1920)*100vw)] text-[#A0A0A0] font-medium">
+            <p className="font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((18/1920)*100vw)] text-[#999999] font-[500] lg:font-[400] leading-[130%]">
               {item.company}
             </p>
 
-            <ul className="flex flex-col gap-[calc((8/375)*100vw)] lg:gap-[calc((10/1920)*100vw)] mt-[calc((4/375)*100vw)] lg:mt-[calc((8/1920)*100vw)]">
+            <ul className="flex flex-col gap-[calc((6/375)*100vw)] lg:gap-[calc((8/1920)*100vw)] mt-[calc((10/375)*100vw)] lg:mt-[calc((16/1920)*100vw)]">
               {item.points.map((point, pIdx) => (
-                <li key={pIdx} className="flex items-start gap-[calc((10/375)*100vw)] lg:gap-[calc((12/1920)*100vw)]">
-                  <div className="relative flex items-center justify-center shrink-0 w-[calc((12/375)*100vw)] lg:w-[calc((12/1920)*100vw)] h-[calc((12/375)*100vw)] lg:h-[calc((12/1920)*100vw)] mt-[calc((4/375)*100vw)] lg:mt-[calc((4/1920)*100vw)]">
+                <li key={pIdx} className="flex items-start gap-[calc((8/375)*100vw)] lg:gap-[calc((12/1920)*100vw)]">
+                  <div className="relative flex items-center justify-center shrink-0 w-[calc((12/375)*100vw)] lg:w-[calc((16/1920)*100vw)] h-[calc((12/375)*100vw)] lg:h-[calc((16/1920)*100vw)] mt-[calc((4/375)*100vw)] lg:mt-[calc((6/1920)*100vw)]">
                     {/* Ripple Waves */}
                     <span
-                      className="absolute w-[calc((6/375)*100vw)] lg:w-[calc((6/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((6/1920)*100vw)] rounded-full border border-[#E25822] bg-[#E25822]/15 water-ripple-effect pointer-events-none"
+                      className="absolute w-[calc((6/375)*100vw)] lg:w-[calc((8/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((8/1920)*100vw)] rounded-full border border-[#A33816] bg-[#A33816]/15 water-ripple-effect pointer-events-none"
                       style={{ animationDelay: `${(pIdx * 0.5) % 2.0}s` }}
                     />
                     <span
-                      className="absolute w-[calc((6/375)*100vw)] lg:w-[calc((6/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((6/1920)*100vw)] rounded-full border border-[#E25822]/40 water-ripple-effect pointer-events-none"
+                      className="absolute w-[calc((6/375)*100vw)] lg:w-[calc((8/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((8/1920)*100vw)] rounded-full border border-[#A33816]/40 water-ripple-effect pointer-events-none"
                       style={{ animationDelay: `${((pIdx * 0.5) % 2.0) + 1.4}s` }}
                     />
                     {/* Center Dot */}
-                    <span className="relative w-[calc((6/375)*100vw)] lg:w-[calc((6/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((6/1920)*100vw)] rounded-full bg-[#E25822] shadow-[0_0_4px_#E25822] z-10" />
+                    <span className="relative w-[calc((6/375)*100vw)] lg:w-[calc((8/1920)*100vw)] h-[calc((6/375)*100vw)] lg:h-[calc((8/1920)*100vw)] rounded-full bg-[#A33816] shadow-[0_0_4px_#A33816] z-10" />
                   </div>
-                  <span className="font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((14/1920)*100vw)] text-[#B0B0B0] leading-relaxed">
+                  <span className="font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((18/1920)*100vw)] text-[#808080] font-[600] lg:font-[500] leading-[150%] lg:max-w-[calc((557/1920)*100vw)]">
                     {point}
                   </span>
                 </li>
@@ -59,24 +59,29 @@ export default function AboutMeTabs() {
   return (
     <div className="lg:col-span-6 flex flex-col h-full border-b lg:border-b-0 lg:border-r border-[#1F1F1F] overflow-hidden">
       {/* Tab Header */}
-      <div className="grid grid-cols-2 border-b border-[#1F1F1F] bg-[#0E0E0E] shrink-0 relative">
+      <div className="flex border-b border-[#1F1F1F] bg-[#0E0E0E] shrink-0 relative h-[calc((56/375)*100vw)] lg:h-[calc((80/1920)*100vw)]">
         {/* Experience Tab */}
         <button
           type="button"
           onClick={() => setActiveTab("experience")}
-          className="relative px-[calc((8/375)*100vw)] lg:px-[calc((32/1920)*100vw)] py-[calc((14/375)*100vw)] lg:py-[calc((24/1920)*100vw)] font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((16/1920)*100vw)] font-medium text-center outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none cursor-pointer border-r border-[#1F1F1F] tracking-tight"
+          className={`relative flex items-center justify-center flex-1 w-[calc((167/375)*100vw)] lg:w-[calc((354.5/1920)*100vw)] h-[calc((56/375)*100vw)] lg:h-[calc((80/1920)*100vw)] font-fustat text-[calc((14/375)*100vw)] lg:text-[calc((20/1920)*100vw)] leading-[130%] tracking-[0%] text-center outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none cursor-pointer border-r border-[#1F1F1F] opacity-100 ${
+            activeTab === "experience" ? "font-semibold" : "font-medium"
+          }`}
         >
           {activeTab === "experience" && (
             <motion.div
               layoutId="activeAboutTabBg"
-              className="absolute inset-0 bg-[#181818] z-0"
+              className="absolute inset-0 bg-[#1A1A1A] border-b border-[#1F1F1F] z-0"
               transition={{ type: "spring", stiffness: 350, damping: 30 }}
             />
           )}
           <motion.span
-            animate={{ color: activeTab === "experience" ? "#E25822" : "#808080" }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="relative z-10 hover:text-white transition-colors duration-200 inline-block leading-tight"
+            animate={{ color: activeTab === "experience" ? "#E54F1F" : "#A3A3A3" }}
+            whileHover={activeTab !== "experience" ? { color: "#FFFFFF" } : {}}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className={`relative z-10 inline-block leading-[130%] text-center w-[calc((78/375)*100vw)] lg:w-full ${
+              activeTab === "experience" ? "font-semibold" : "font-medium"
+            }`}
           >
             Professional Experience
           </motion.span>
@@ -86,19 +91,24 @@ export default function AboutMeTabs() {
         <button
           type="button"
           onClick={() => setActiveTab("education")}
-          className="relative px-[calc((8/375)*100vw)] lg:px-[calc((32/1920)*100vw)] py-[calc((14/375)*100vw)] lg:py-[calc((24/1920)*100vw)] font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((16/1920)*100vw)] font-medium text-center outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none cursor-pointer tracking-tight"
+          className={`relative flex items-center justify-center flex-1 w-[calc((167/375)*100vw)] lg:w-[calc((354.5/1920)*100vw)] h-[calc((56/375)*100vw)] lg:h-[calc((80/1920)*100vw)] font-fustat text-[calc((14/375)*100vw)] lg:text-[calc((20/1920)*100vw)] leading-[130%] tracking-[0%] text-center outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none cursor-pointer opacity-100 ${
+            activeTab === "education" ? "font-semibold" : "font-medium"
+          }`}
         >
           {activeTab === "education" && (
             <motion.div
               layoutId="activeAboutTabBg"
-              className="absolute inset-0 bg-[#181818] z-0"
+              className="absolute inset-0 bg-[#1A1A1A] border-b border-[#1F1F1F] z-0"
               transition={{ type: "spring", stiffness: 350, damping: 30 }}
             />
           )}
           <motion.span
-            animate={{ color: activeTab === "education" ? "#E25822" : "#808080" }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="relative z-10 hover:text-white transition-colors duration-200 inline-block leading-tight"
+            animate={{ color: activeTab === "education" ? "#E54F1F" : "#A3A3A3" }}
+            whileHover={activeTab !== "education" ? { color: "#FFFFFF" } : {}}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className={`relative z-10 inline-block leading-[130%] text-center w-[calc((78/375)*100vw)] lg:w-full ${
+              activeTab === "education" ? "font-semibold" : "font-medium"
+            }`}
           >
             Education Background
           </motion.span>

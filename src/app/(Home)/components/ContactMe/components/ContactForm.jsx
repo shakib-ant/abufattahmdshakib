@@ -4,6 +4,7 @@ import React from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useContactForm, alertVariants } from "../utils";
+import ResumeButton from "@/app/(Home)/components/Hero/components/ResumeButton";
 
 export default function ContactForm() {
   const {
@@ -17,8 +18,8 @@ export default function ContactForm() {
   } = useContactForm();
 
   return (
-    <div className="w-full lg:w-[863px] shrink-0 bg-[#0F0F0F] p-6 sm:p-10 flex flex-col justify-center gap-5">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
+    <div className="w-full lg:w-[calc((863/1920)*100vw)] shrink-0 bg-[#0F0F0F] p-[calc((16/375)*100vw)] lg:p-[calc((40/1920)*100vw)] flex flex-col justify-center gap-[calc((16/375)*100vw)] lg:gap-[calc((20/1920)*100vw)]">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-[calc((16/375)*100vw)] lg:gap-[calc((20/1920)*100vw)] w-full">
         {/* Status Message */}
         <AnimatePresence>
           {status === "success" && (
@@ -27,10 +28,10 @@ export default function ContactForm() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="flex items-center justify-between gap-3 p-4 rounded-xl bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-sm"
+              className="flex items-center justify-between gap-[calc((10/375)*100vw)] lg:gap-[calc((12/1920)*100vw)] p-[calc((12/375)*100vw)] lg:p-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((14/1920)*100vw)]"
             >
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-[calc((10/375)*100vw)] lg:gap-[calc((12/1920)*100vw)]">
+                <CheckCircle2 className="w-[calc((18/375)*100vw)] h-[calc((18/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-emerald-400 shrink-0" />
                 <span className="font-medium text-emerald-400">{responseMsg}</span>
               </div>
               <button
@@ -39,10 +40,10 @@ export default function ContactForm() {
                   clearTimer();
                   setStatus("idle");
                 }}
-                className="p-1 rounded-lg text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-[calc((4/375)*100vw)] lg:p-[calc((4/1920)*100vw)] rounded-[calc((6/375)*100vw)] lg:rounded-[calc((8/1920)*100vw)] text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
                 title="Close"
               >
-                <X className="w-4 h-4" />
+                <X className="w-[calc((14/375)*100vw)] h-[calc((14/375)*100vw)] lg:w-[calc((16/1920)*100vw)] lg:h-[calc((16/1920)*100vw)]" />
               </button>
             </motion.div>
           )}
@@ -53,10 +54,10 @@ export default function ContactForm() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="flex items-center justify-between gap-3 p-4 rounded-xl bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-sm"
+              className="flex items-center justify-between gap-[calc((10/375)*100vw)] lg:gap-[calc((12/1920)*100vw)] p-[calc((12/375)*100vw)] lg:p-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#E54F1F]/15 border border-[#E54F1F]/50 backdrop-blur-md shadow-[0_0_25px_rgba(229,79,31,0.2)] font-fustat text-[calc((12/375)*100vw)] lg:text-[calc((14/1920)*100vw)]"
             >
-              <div className="flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />
+              <div className="flex items-center gap-[calc((10/375)*100vw)] lg:gap-[calc((12/1920)*100vw)]">
+                <AlertCircle className="w-[calc((18/375)*100vw)] h-[calc((18/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-red-400 shrink-0" />
                 <span className="font-medium text-red-400">{responseMsg}</span>
               </div>
               <button
@@ -65,10 +66,10 @@ export default function ContactForm() {
                   clearTimer();
                   setStatus("idle");
                 }}
-                className="p-1 rounded-lg text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-[calc((4/375)*100vw)] lg:p-[calc((4/1920)*100vw)] rounded-[calc((6/375)*100vw)] lg:rounded-[calc((8/1920)*100vw)] text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
                 title="Close"
               >
-                <X className="w-4 h-4" />
+                <X className="w-[calc((14/375)*100vw)] h-[calc((14/375)*100vw)] lg:w-[calc((16/1920)*100vw)] lg:h-[calc((16/1920)*100vw)]" />
               </button>
             </motion.div>
           )}
@@ -83,11 +84,11 @@ export default function ContactForm() {
           placeholder="Full Name"
           required
           disabled={status === "loading"}
-          className="w-full px-5 py-4 rounded-xl bg-[#1C1C1C] border border-[#282828] font-fustat text-sm text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
+          className="w-full px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)] py-[calc((12/375)*100vw)] lg:py-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#1C1C1C] border border-[#282828] font-fustat text-[calc((13/375)*100vw)] lg:text-[calc((15/1920)*100vw)] text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
         />
 
         {/* Email Inputs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[calc((16/375)*100vw)] lg:gap-[calc((20/1920)*100vw)]">
           <input
             type="email"
             name="email"
@@ -98,7 +99,7 @@ export default function ContactForm() {
             title="Please enter a valid email address (e.g. name@example.com)"
             required
             disabled={status === "loading"}
-            className="w-full px-5 py-4 rounded-xl bg-[#1C1C1C] border border-[#282828] font-fustat text-sm text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
+            className="w-full px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)] py-[calc((12/375)*100vw)] lg:py-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#1C1C1C] border border-[#282828] font-fustat text-[calc((13/375)*100vw)] lg:text-[calc((15/1920)*100vw)] text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
           />
           <input
             type="email"
@@ -107,7 +108,7 @@ export default function ContactForm() {
             onChange={handleChange}
             placeholder="Secondary Email (Optional)"
             disabled={status === "loading"}
-            className="w-full px-5 py-4 rounded-xl bg-[#1C1C1C] border border-[#282828] font-fustat text-sm text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
+            className="w-full px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)] py-[calc((12/375)*100vw)] lg:py-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#1C1C1C] border border-[#282828] font-fustat text-[calc((13/375)*100vw)] lg:text-[calc((15/1920)*100vw)] text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
           />
         </div>
 
@@ -120,7 +121,7 @@ export default function ContactForm() {
           placeholder="Subject"
           required
           disabled={status === "loading"}
-          className="w-full px-5 py-4 rounded-xl bg-[#1C1C1C] border border-[#282828] font-fustat text-sm text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
+          className="w-full px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)] py-[calc((12/375)*100vw)] lg:py-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#1C1C1C] border border-[#282828] font-fustat text-[calc((13/375)*100vw)] lg:text-[calc((15/1920)*100vw)] text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 disabled:opacity-60"
         />
 
         {/* Message */}
@@ -132,27 +133,22 @@ export default function ContactForm() {
           placeholder="Write down your message"
           required
           disabled={status === "loading"}
-          className="w-full px-5 py-4 rounded-xl bg-[#1C1C1C] border border-[#282828] font-fustat text-sm text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 resize-none disabled:opacity-60"
+          className="w-full px-[calc((16/375)*100vw)] lg:px-[calc((20/1920)*100vw)] py-[calc((12/375)*100vw)] lg:py-[calc((16/1920)*100vw)] rounded-[calc((10/375)*100vw)] lg:rounded-[calc((12/1920)*100vw)] bg-[#1C1C1C] border border-[#282828] font-fustat text-[calc((13/375)*100vw)] lg:text-[calc((15/1920)*100vw)] text-[#F0F0F0] placeholder-[#606060] outline-none focus:border-[#E54F1F] transition-colors duration-200 resize-none disabled:opacity-60"
         />
 
         {/* Submit Button */}
-        <button
+        <ResumeButton
+          as="button"
           type="submit"
+          showLeftIcon={false}
           disabled={status === "loading"}
-          className="w-full py-4 rounded-full bg-white text-black font-fustat text-base font-semibold hover:bg-[#E54F1F] hover:text-white active:scale-[0.99] transition-all duration-300 shadow-xl cursor-pointer mt-2 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group"
-        >
-          {status === "loading" ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              <span>Sending Message...</span>
-            </>
-          ) : (
-            <>
-              <span>Send Message</span>
-              <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
-            </>
-          )}
-        </button>
+          loading={status === "loading"}
+          text={status === "loading" ? "Sending Message..." : "Send Message"}
+          rightIcon={
+            <Send className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] stroke-[2.2]" />
+          }
+          className="w-full mt-[calc((8/375)*100vw)] lg:mt-[calc((12/1920)*100vw)] disabled:opacity-70 disabled:cursor-not-allowed"
+        />
       </form>
     </div>
   );

@@ -12,7 +12,7 @@ export default function ContactMe() {
   return (
     <section className="relative w-full pt-[calc((40/375)*100vw)] lg:pt-[calc((100/1920)*100vw)] pb-0 z-20 overflow-hidden" id="contact">
       {/* Glow Grid */}
-      <div className="translate-y-[calc((20/375)*100vw)] lg:translate-y-[calc((54/1920)*100vw)]">
+      <div className="translate-y-[calc((-10/375)*100vw)] lg:translate-y-[calc((54/1920)*100vw)]">
         <AboutMeGlowGrid />
       </div>
 

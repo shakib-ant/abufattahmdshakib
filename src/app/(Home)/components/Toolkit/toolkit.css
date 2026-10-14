@@ -1,11 +1,12 @@
 /* Toolkit Styles */
 
 .toolkit-grid {
-  width: calc((330 / 375) * 100vw);
-  height: calc((231 / 375) * 100vw);
+  width: calc((320 / 375) * 100vw);
+  max-width: calc((320 / 375) * 100vw);
+  height: calc((274 / 375) * 100vw);
   display: grid;
-  grid-template-columns: calc((27.5 / 375) * 100vw) repeat(5, calc((55 / 375) * 100vw)) calc((27.5 / 375) * 100vw);
-  grid-template-rows: calc((23.1 / 375) * 100vw) repeat(4, calc((46.2 / 375) * 100vw)) calc((23.1 / 375) * 100vw);
+  grid-template-columns: 0px repeat(5, calc((64 / 375) * 100vw)) 0px;
+  grid-template-rows: calc((25 / 375) * 100vw) repeat(4, calc((56 / 375) * 100vw)) calc((25 / 375) * 100vw);
   transform-origin: center;
 }
 

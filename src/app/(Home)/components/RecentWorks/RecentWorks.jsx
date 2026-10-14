@@ -13,7 +13,7 @@ export default function RecentWorks() {
   return (
     <section id="work" className="relative w-full py-[calc((40/375)*100vw)] lg:py-[calc((100/1920)*100vw)] overflow-hidden z-20 flex flex-col items-center">
       {/* Glow Grid */}
-      <div className="translate-y-[calc((60/375)*100vw)] lg:translate-y-[calc((-20/1920)*100vw)]">
+      <div className="translate-y-[calc((-40/375)*100vw)] lg:translate-y-[calc((-20/1920)*100vw)]">
         <AboutMeGlowGrid />
       </div>
 
@@ -24,7 +24,7 @@ export default function RecentWorks() {
       />
 
       {/* Works Grid */}
-      <div className="w-full border-t border-[#1F1F1F] bg-[#0F0F0F] grid grid-cols-1 lg:grid-cols-2 gap-[calc((20/375)*100vw)] lg:gap-[calc((32/1920)*100vw)] relative z-10">
+      <div className="w-full border-t border-[#1F1F1F] bg-[#0F0F0F] grid grid-cols-1 lg:grid-cols-2 gap-[calc((20/375)*100vw)] lg:gap-[calc((30/1920)*100vw)] py-[calc((20/375)*100vw)] lg:p-[calc((20/1920)*100vw)] relative z-10">
         {recentWorksData?.map((work) => (
           <RecentWorkCard key={work.id} work={work} />
         ))}

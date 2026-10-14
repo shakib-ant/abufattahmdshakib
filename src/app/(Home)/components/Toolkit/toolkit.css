@@ -1,12 +1,21 @@
 /* Toolkit Styles */
 
 .toolkit-grid {
-  width: 714px;
-  height: 500px;
+  width: calc((330 / 375) * 100vw);
+  height: calc((231 / 375) * 100vw);
   display: grid;
-  grid-template-columns: 59.5px repeat(5, 119px) 59.5px;
-  grid-template-rows: 50px repeat(4, 100px) 50px;
+  grid-template-columns: calc((27.5 / 375) * 100vw) repeat(5, calc((55 / 375) * 100vw)) calc((27.5 / 375) * 100vw);
+  grid-template-rows: calc((23.1 / 375) * 100vw) repeat(4, calc((46.2 / 375) * 100vw)) calc((23.1 / 375) * 100vw);
   transform-origin: center;
+}
+
+@media (min-width: 1024px) {
+  .toolkit-grid {
+    width: calc((714 / 1920) * 100vw);
+    height: calc((500 / 1920) * 100vw);
+    grid-template-columns: calc((59.5 / 1920) * 100vw) repeat(5, calc((119 / 1920) * 100vw)) calc((59.5 / 1920) * 100vw);
+    grid-template-rows: calc((50 / 1920) * 100vw) repeat(4, calc((100 / 1920) * 100vw)) calc((50 / 1920) * 100vw);
+  }
 }
 
 /* Vertical Line */

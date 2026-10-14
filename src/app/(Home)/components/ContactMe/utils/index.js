@@ -33,7 +33,7 @@ export const useContactForm = (endpoint = "https://formsubmit.co/ajax/eb8f00b23a
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    secondaryEmail: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -73,16 +73,7 @@ export const useContactForm = (endpoint = "https://formsubmit.co/ajax/eb8f00b23a
       return;
     }
 
-    const trimmedSecondary = formData.secondaryEmail.trim();
-    if (trimmedSecondary && !EMAIL_REGEX.test(trimmedSecondary)) {
-      setStatus("error");
-      setResponseMsg("Please enter a valid secondary email address (e.g. name@example.com).");
-      timeoutRef.current = setTimeout(() => {
-        setStatus("idle");
-        setResponseMsg("");
-      }, 5000);
-      return;
-    }
+    const trimmedPhone = formData.phone ? formData.phone.trim() : "";
 
     setStatus("loading");
     setResponseMsg("");
@@ -97,7 +88,7 @@ export const useContactForm = (endpoint = "https://formsubmit.co/ajax/eb8f00b23a
         body: JSON.stringify({
           name: formData.fullName,
           email: trimmedEmail,
-          secondaryEmail: trimmedSecondary || "N/A",
+          phone: trimmedPhone || "N/A",
           _subject: formData.subject
             ? `Portfolio Message: ${formData.subject}`
             : `New Contact Form Message from ${formData.fullName}`,
@@ -115,7 +106,7 @@ export const useContactForm = (endpoint = "https://formsubmit.co/ajax/eb8f00b23a
         setFormData({
           fullName: "",
           email: "",
-          secondaryEmail: "",
+          phone: "",
           subject: "",
           message: "",
         });

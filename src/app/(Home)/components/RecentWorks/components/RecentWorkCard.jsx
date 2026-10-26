@@ -67,7 +67,7 @@ export default function RecentWorkCard({ work }) {
                 width={19}
                 height={19}
                 alt={work.userName}
-                className="h-[24px] lg:h-[calc((24/1920)*100vw)] w-auto object-contain flex-shrink-0"
+                className="h-[calc((18/375)*100vw)] lg:h-[calc((24/1920)*100vw)] w-auto object-contain flex-shrink-0"
               />
             )}
             <span
@@ -76,7 +76,7 @@ export default function RecentWorkCard({ work }) {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
-              className="font-rajdhani font-[400] text-[14px] lg:text-[calc((16/1920)*100vw)] leading-[1.5] bg-clip-text text-transparent truncate"
+              className="font-rajdhani font-[400] text-[calc((12/375)*100vw)] lg:text-[calc((16/1920)*100vw)] leading-[1.5] bg-clip-text text-transparent truncate"
             >
               {work.userName}
             </span>

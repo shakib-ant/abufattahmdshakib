@@ -1,38 +1,53 @@
 export const experienceData = [
   {
     id: 1,
-    role: "Frontend Developer",
-    company: "Techsoft solutions ltd.",
-    period: "2023 - Present",
+    role: "Full Stack Web Developer",
+    company: "Antopolis",
+    period: "Mar 2025 – Present",
     points: [
-      "Built modern web interfaces using React.js, Next.js, and Tailwind CSS.",
-      "Improved website performance, responsiveness, and cross-browser compatibility.",
-      "Integrated REST APIs and dynamic content management features.",
-    ],
+      "Engineered fluid, responsive UI architectures featuring seamless micro-interactions and scroll-driven animations.",
+      "Integrated secure RESTful APIs to feed dynamic client-side states without compromising layout stability.",
+      "Diagnosed rendering bottlenecks and hardware-accelerated animations to maintain 60 FPS and peak Core Web Vitals."
+    ]
   },
   {
     id: 2,
-    role: "Web Developer Intern",
-    company: "Creative IT Institute",
-    period: "2022 - 2023",
+    role: "Full Stack Web Developer Intern",
+    company: "Antopolis",
+    period: " Dec 2024 – Feb 2025",
     points: [
-      "Designed and developed landing pages and portfolio websites.",
-      "Used HTML, CSS, JavaScript, Bootstrap, and WordPress.",
-      "Assisted in debugging, testing, and improving website layouts.",
-    ],
+      "Engineered responsive full-stack web applications with interactive UIs and secure JWT-authenticated CRUD APIs.",
+      "Designed structured database schemas, executed rigorous API testing with Postman, and managed end-to-end deployments."
+    ]
   },
 ];
 
 export const educationData = [
   {
     id: 1,
-    role: "Bachelor of Science in Computer Science",
-    company: "State University of Bangladesh",
-    period: "2020 - 2024",
+    role: "Bachelor of Science (EEE)",
+    company: "Southeast University, Dhaka",
+    period: "2023 - 2026",
     points: [
-      "Focused on Software Engineering, Web Technologies, and Data Structures.",
-      "Completed core projects in modern JavaScript and full-stack development.",
-      "Maintained strong academic standing and participated in tech workshops.",
+      "CGPA 3.10",
+    ],
+  },
+  {
+    id: 2,
+    role: "Diploma in Engineering , Electronics Technology",
+    company: "Rajshahi Polytechnic Institute, Rajshahi",
+    period: "2018 - 2022",
+    points: [
+      "CGPA 3.54",
+    ],
+  },
+  {
+    id: 3,
+    role: "Secondary School Certificate (SSC)",
+    company: "Nazipur Govt. Model High School,Naogaon",
+    period: "2018",
+    points: [
+      "CGPA 4.71",
     ],
   },
 ];
@@ -41,19 +56,19 @@ export const statsData = [
   {
     id: 1,
     label: "Years of Experience",
-    count: 1,
+    count: 1.8,
     suffix: "+",
   },
   {
     id: 2,
     label: "Project Completed",
-    count: 10,
+    count: 20,
     suffix: "+",
   },
   {
     id: 3,
     label: "Skills Unlocked",
-    count: 15,
+    count: 30,
     suffix: "+",
   },
 ];
@@ -61,5 +76,5 @@ export const statsData = [
 export const careerObjective = {
   title: "Career Objective",
   description:
-    "Young Trailblazer in Full Stack Development. Mastering the art of code from UI/UX magic to server-side wizardry. Fluent in HTML, CSS, JavaScript, React, Firebase, Node.js, MongoDB. Committed to turning ideas into reality and making a mark in the digital realm. Let's build brilliance together!",
+    "Passionate Software Engineer dedicated to crafting fluid, high-performance web applications with seamless animations and intuitive UI/UX. Skilled in building dynamic frontends and robust API integrations. Driven to transform complex ideas into scalable digital solutions that elevate user engagement.",
 };

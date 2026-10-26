@@ -169,7 +169,7 @@ export default function ContactForm() {
           ref={buttonRef}
           type="submit"
           disabled={status === "loading"}
-          className="group relative overflow-hidden inline-flex items-center justify-center w-[calc((316/375)*100vw)] lg:w-[calc((717/1920)*100vw)] h-[calc((56/375)*100vw)] lg:h-[calc((56/1920)*100vw)] rounded-[calc((40/375)*100vw)] lg:rounded-[calc((40/1920)*100vw)] bg-[#E54F1F] active:scale-[0.98] transition-transform duration-200 cursor-pointer select-none mt-[calc((40/375)*100vw)] lg:mt-[calc((40/1920)*100vw)] mb-[calc((44/375)*100vw)] lg:mb-0 disabled:opacity-70 disabled:cursor-not-allowed mx-auto"
+          className="group relative overflow-hidden inline-flex items-center justify-center w-[calc((316/375)*100vw)] lg:w-[calc((717/1920)*100vw)] h-[calc((44/375)*100vw)] lg:h-[calc((56/1920)*100vw)] rounded-[calc((40/375)*100vw)] lg:rounded-[calc((40/1920)*100vw)] bg-[#E54F1F] active:scale-[0.98] transition-transform duration-200 cursor-pointer select-none mt-[calc((40/375)*100vw)] lg:mt-[calc((40/1920)*100vw)] mb-[calc((44/375)*100vw)] lg:mb-0 disabled:opacity-70 disabled:cursor-not-allowed mx-auto"
         >
           {/* Base Layer: #E54F1F background with #FDFDFD text & Send icon beside it */}
           <div className="w-full h-full flex items-center justify-center gap-[calc((8/375)*100vw)] lg:gap-[calc((8/1920)*100vw)] text-[#FDFDFD] px-[calc((16/375)*100vw)] lg:px-[calc((16/1920)*100vw)]">

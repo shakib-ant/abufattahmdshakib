@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { Pencil } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import CommonButton from "@/components/CommonButton/CommonButton";
@@ -9,7 +9,28 @@ import { recentWorksData } from "./data";
 import RecentWorkCard from "./components/RecentWorkCard";
 import "./RecentWorks.css";
 
+const INITIAL_VISIBLE_COUNT = 4;
+const LOAD_MORE_COUNT = 4;
+
 export default function RecentWorks() {
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  const sortedWorks = useMemo(() => {
+    return [...recentWorksData].sort(
+      (a, b) => (a.precedence ?? 0) - (b.precedence ?? 0)
+    );
+  }, []);
+
+  const visibleWorks = useMemo(() => {
+    return sortedWorks.slice(0, visibleCount);
+  }, [sortedWorks, visibleCount]);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + LOAD_MORE_COUNT);
+  };
+
+  const hasMore = visibleCount < sortedWorks.length;
+
   return (
     <section id="work" className="relative w-full py-[calc((40/375)*100vw)] lg:py-[calc((100/1920)*100vw)] overflow-hidden z-20 flex flex-col items-center">
       {/* Glow Grid */}
@@ -24,16 +45,22 @@ export default function RecentWorks() {
       />
 
       {/* Works Grid */}
-      <div className="w-full border-t border-[#1F1F1F] bg-[#0F0F0F] grid grid-cols-1 lg:grid-cols-2 gap-[calc((20/375)*100vw)] lg:gap-[calc((30/1920)*100vw)] py-[calc((20/375)*100vw)] lg:p-[calc((20/1920)*100vw)] relative z-10">
-        {recentWorksData?.map((work) => (
-          <RecentWorkCard key={work.id} work={work} />
+      <div className="w-full border-t border-[#1F1F1F] bg-[#0F0F0F] grid grid-cols-1 lg:grid-cols-2 gap-[calc((40/375)*100vw)] lg:gap-[calc((50/1920)*100vw)] py-[calc((20/375)*100vw)] lg:p-[calc((20/1920)*100vw)] relative z-10">
+        {visibleWorks.map((work, index) => (
+          <RecentWorkCard key={work.precedence ?? index} work={work} />
         ))}
       </div>
 
       {/* CTA Button */}
-      <div className="flex justify-center mt-[calc((36/375)*100vw)] lg:mt-[calc((64/1920)*100vw)] relative z-10">
-        <CommonButton text="View All My Works" icon={Pencil} href="#works" />
-      </div>
+      {hasMore && (
+        <div className="flex justify-center mt-[calc((36/375)*100vw)] lg:mt-[calc((64/1920)*100vw)] relative z-10">
+          <CommonButton
+            text="View More Works"
+            icon={Pencil}
+            onClick={handleLoadMore}
+          />
+        </div>
+      )}
     </section>
   );
 }

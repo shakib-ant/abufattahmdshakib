@@ -28,7 +28,7 @@ export default function AboutMeStats() {
           {statsData.map((stat) => (
             <div
               key={stat.id}
-              className="flex items-center justify-between gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)]"
+              className="flex w-full lg:w-[calc((290/1920)*100vw)] items-center justify-between gap-[calc((12/375)*100vw)] lg:gap-[calc((16/1920)*100vw)]"
             >
               <span className="font-fustat text-[calc((18/375)*100vw)] lg:text-[calc((18/1920)*100vw)] text-[#B3B3B3] font-semibold font-[600] leading-[130%] tracking-[0%] w-full lg:w-[calc((140/1920)*100vw)]">
                 {stat.label}

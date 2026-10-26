@@ -46,13 +46,13 @@ export default function ContactInfoGrid() {
                 <button
                   type="button"
                   onClick={(e) => handleCopy(e, item.id, item.value)}
-                  className="p-[calc((4/375)*100vw)] lg:p-[calc((6/1920)*100vw)] rounded-[calc((6/375)*100vw)] lg:rounded-[calc((6/1920)*100vw)] bg-[#181818] border border-transparent hover:border-[#2C2C2C] text-[#808080] hover:text-[#E25822] transition-all duration-200 outline-none shrink-0 relative z-10"
+                  className="p-[calc((4/375)*100vw)] lg:p-[calc((6/1920)*100vw)] rounded-[calc((6/375)*100vw)] lg:rounded-[calc((6/1920)*100vw)] transition-all duration-200 outline-none shrink-0 relative z-10"
                   title="Copy to clipboard"
                 >
                   {copiedId === item.id ? (
                     <Check className="w-[calc((10/375)*100vw)] h-[calc((10/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-green-400" />
                   ) : (
-                    <Copy className="w-[calc((10/375)*100vw)] h-[calc((10/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-[#E25822]" />
+                    <Copy className="w-[calc((10/375)*100vw)] h-[calc((10/375)*100vw)] lg:w-[calc((20/1920)*100vw)] lg:h-[calc((20/1920)*100vw)] text-[#1F1F1F] hover:text-[#E25822] transition-all duration-200" />
                   )}
                 </button>
               )}

@@ -28,9 +28,8 @@ export default function CaseStudy() {
 
   return (
     <section
-      className={`relative w-screen left-1/2 -translate-x-1/2 h-[calc((741/375)*100vw)] lg:h-[calc((800/1920)*100vw)] z-20 lg:my-[calc((80/1920)*100vw)] bg-[#0F0F0F] overflow-hidden ${
-        selectedProject ? "is-paused" : ""
-      }`}
+      className={`relative w-screen left-1/2 -translate-x-1/2 h-[calc((741/375)*100vw)] lg:h-[calc((800/1920)*100vw)] z-20 lg:my-[calc((80/1920)*100vw)] bg-[#0F0F0F] overflow-hidden ${selectedProject ? "is-paused" : ""
+        }`}
       id="casestudy"
     >
       {/* Background Image */}

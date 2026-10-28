@@ -16,7 +16,7 @@ export const recentWorksData = [
     tags: ["Company websites"],
     liveLink: "https://icebusinesstimes.com/",
     precedence: 2,
-    favicon: "/newFavicons/ice.png"
+    favicon: "/newFavicons/ice.png" 
   },
   {
     cardImage: "https://e-commerce-test.sgp1.digitaloceanspaces.com/Rasheed Mymunul Islam/1789370947311-rasheed.png",

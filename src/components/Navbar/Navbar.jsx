@@ -3,9 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import CommonButton from "@/components/CommonButton/CommonButton";
+import ResumeButton from "@/components/ResumeButton/ResumeButton";
 import "./Navbar.css";
 
 import { navLinks, socialLinks } from "./data";
@@ -30,7 +29,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full h-[calc((72/375)*100vw)] lg:h-[calc((80/1920)*100vw)] transition-all duration-150 flex items-center ${mobileMenuOpen
         ? "z-[100] bg-[#0F0F0F] border-b border-[#1F1F1F]"
         : isScrolled
-          ? "z-50 bg-[#E54F1F]/15 backdrop-blur-md border-b border-[#E54F1F]/40"
+          ? "z-50 bg-[#0F0F0F]/80 backdrop-blur-md border-b border-[#1F1F1F]"
           : "z-20 bg-transparent border-b border-[#1F1F1F]/60"
         }`}
     >
@@ -49,8 +48,8 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* Menu Container: width: 279, height: 15, gap: 60 */}
-            <div className="flex items-center lg:w-[calc((279/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:gap-[calc((60/1920)*100vw)]">
+            {/* Menu Container */}
+            <div className="flex items-center lg:gap-[calc((60/1920)*100vw)]">
               {navLinks.map((link) => {
                 const isActive = activeNav === link.href;
                 const isDownload = link.download;
@@ -63,7 +62,7 @@ export default function Navbar() {
                       download={link.fileName || true}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 text-neutral-400 hover:text-white lg:w-[calc((44/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap"
+                      className="relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 text-neutral-400 hover:text-white min-w-fit lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap"
                     >
                       <span>{link.label}</span>
                       <span className="absolute bottom-0 left-0 w-full h-[2px] lg:h-[calc((2/1920)*100vw)] bg-[#E54F1F] rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
@@ -76,7 +75,7 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 lg:w-[calc((44/1920)*100vw)] lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap ${isActive ? "text-white font-medium" : "text-neutral-400"
+                    className={`relative group font-fustat inline-flex flex-col items-center justify-center transition-colors duration-200 min-w-fit lg:h-[calc((15/1920)*100vw)] lg:p-[calc((2/1920)*100vw)] lg:gap-[calc((10/1920)*100vw)] text-sm lg:text-[calc((15/1920)*100vw)] leading-none whitespace-nowrap ${isActive ? "text-white font-medium" : "text-neutral-400"
                       }`}
                   >
                     <span>{link.label}</span>
@@ -96,11 +95,9 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Contact Button */}
-          <CommonButton
-            text="Contact with Me"
-            href="#contact"
-            icon={Phone}
+          {/* Resume CTA Button */}
+          <ResumeButton
+            className="lg:w-[calc((196/1920)*100vw)] lg:h-[calc((44/1920)*100vw)] rounded-full lg:p-0"
           />
         </nav>
 

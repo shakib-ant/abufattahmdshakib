@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { Send, CheckCircle2, AlertCircle, Loader2, X } from "lucide-react";
+import React from "react";
+import { Send, CheckCircle2, AlertCircle, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useContactForm, alertVariants } from "../utils";
+import ResumeButton from "@/components/ResumeButton/ResumeButton";
 
 export default function ContactForm() {
   const {
@@ -15,32 +16,6 @@ export default function ContactForm() {
     handleChange,
     handleSubmit,
   } = useContactForm();
-
-  const buttonRef = useRef(null);
-  const [isRevealed, setIsRevealed] = useState(false);
-  const [isSlideFinished, setIsSlideFinished] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsRevealed(true);
-        }
-      },
-      { threshold: 0.85 }
-    );
-
-    const current = buttonRef.current;
-    if (current) {
-      observer.observe(current);
-    }
-
-    return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
-    };
-  }, []);
 
   return (
     <div className="w-full lg:w-[calc((863/1920)*100vw)] shrink-0 bg-[#0F0F0F] px-[calc((16/375)*100vw)] pt-[calc((40/375)*100vw)] pb-0 lg:py-[calc((40/1920)*100vw)] lg:px-[calc((40/1920)*100vw)] flex flex-col justify-center items-center">
@@ -165,50 +140,15 @@ export default function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <button
-          ref={buttonRef}
+        <ResumeButton
           type="submit"
           disabled={status === "loading"}
-          className="group relative overflow-hidden inline-flex items-center justify-center w-[calc((316/375)*100vw)] lg:w-[calc((717/1920)*100vw)] h-[calc((44/375)*100vw)] lg:h-[calc((56/1920)*100vw)] rounded-[calc((40/375)*100vw)] lg:rounded-[calc((40/1920)*100vw)] bg-[#E54F1F] active:scale-[0.98] transition-transform duration-200 cursor-pointer select-none mt-[calc((40/375)*100vw)] lg:mt-[calc((40/1920)*100vw)] mb-[calc((44/375)*100vw)] lg:mb-0 disabled:opacity-70 disabled:cursor-not-allowed mx-auto"
-        >
-          {/* Base Layer: #E54F1F background with #FDFDFD text & Send icon beside it */}
-          <div className="w-full h-full flex items-center justify-center gap-[calc((8/375)*100vw)] lg:gap-[calc((8/1920)*100vw)] text-[#FDFDFD] px-[calc((16/375)*100vw)] lg:px-[calc((16/1920)*100vw)]">
-            <span className="font-fustat font-semibold text-[calc((16/375)*100vw)] lg:text-[calc((18/1920)*100vw)] leading-[100%] whitespace-nowrap">
-              {status === "loading" ? "Sending Message..." : "Send Message"}
-            </span>
-            {status === "loading" ? (
-              <Loader2 className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] animate-spin" />
-            ) : (
-              <Send className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] stroke-[2.2]" />
-            )}
-          </div>
-
-          {/* Sliding Layer: Long pill button with text & send icon, dragged across from the left side */}
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: isRevealed ? "0%" : "-100%" }}
-            transition={{ duration: 3.0, ease: "linear", delay: 0.5 }}
-            onAnimationComplete={() => setIsSlideFinished(true)}
-            className="absolute inset-0 w-full h-full bg-[#FDFDFD] text-[#121212] rounded-[calc((40/375)*100vw)] lg:rounded-[calc((40/1920)*100vw)] pointer-events-none flex items-center justify-center gap-[calc((8/375)*100vw)] lg:gap-[calc((8/1920)*100vw)] px-[calc((16/375)*100vw)] lg:px-[calc((16/1920)*100vw)] shadow-[4px_0_12px_rgba(0,0,0,0.18)]"
-          >
-            {/* Text & Send icon on the long white button */}
-            <span className="font-fustat font-semibold text-[calc((16/375)*100vw)] lg:text-[calc((18/1920)*100vw)] leading-[100%] whitespace-nowrap">
-              {status === "loading" ? "Sending Message..." : "Send Message"}
-            </span>
-            {status === "loading" ? (
-              <Loader2 className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] animate-spin text-[#121212]" />
-            ) : (
-              <motion.div
-                initial={{ rotate: 45 }}
-                animate={{ rotate: isSlideFinished ? 0 : 45 }}
-                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center justify-center origin-center"
-              >
-                <Send className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] stroke-[2.2] text-[#121212]" />
-              </motion.div>
-            )}
-          </motion.div>
-        </button>
+          loading={status === "loading"}
+          text={status === "loading" ? "Sending Message..." : "Send Message"}
+          icon={<Send className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] text-black stroke-[2.2]" />}
+          rightIcon={<Send className="w-[calc((16/375)*100vw)] h-[calc((16/375)*100vw)] lg:w-[calc((18/1920)*100vw)] lg:h-[calc((18/1920)*100vw)] text-white stroke-[2.2]" />}
+          className="w-[calc((316/375)*100vw)] lg:w-[calc((717/1920)*100vw)] h-[calc((44/375)*100vw)] lg:h-[calc((56/1920)*100vw)] mt-[calc((40/375)*100vw)] lg:mt-[calc((40/1920)*100vw)] mb-[calc((44/375)*100vw)] lg:mb-0 mx-auto"
+        />
       </form>
     </div>
   );

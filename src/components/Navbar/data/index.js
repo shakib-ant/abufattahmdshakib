@@ -1,13 +1,8 @@
 // Navigation Links Data
 export const navLinks = [
-  { label: "Work", href: "#work" },
-  {
-    label: "Resume",
-    href: "/share/Abu-Fattah-Md-Shaki-CV.pdf",
-    download: true,
-    fileName: "Abu-Fattah-Md-Shakib-CV.pdf",
-  },
   { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "#work" },
 ];
 
 // Social Links Data

@@ -60,11 +60,6 @@ export default function Hero() {
                     b
                   </span>
                 </h1>
-
-                {/* Resume Button */}
-                <div className="mb-[calc((10/1920)*100vw)]">
-                  <ResumeButton />
-                </div>
               </div>
             </div>
           </div>

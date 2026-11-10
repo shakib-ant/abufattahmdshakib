@@ -97,6 +97,7 @@ export default function Navbar() {
 
           {/* Resume CTA Button */}
           <ResumeButton
+            href="https://drive.google.com/file/d/1lj4Fx5HQ2H_tvPXTkbH_nOG31sO18AcL/view?usp=sharing"
             className="lg:w-[calc((196/1920)*100vw)] lg:h-[calc((44/1920)*100vw)] rounded-full lg:p-0"
           />
         </nav>

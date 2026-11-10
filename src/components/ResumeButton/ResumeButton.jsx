@@ -26,8 +26,8 @@ const ResumeDocIcon = (props) => (
 // Resume Button
 export default function ResumeButton({
   as: ComponentProp,
-  href = "/share/Abu-Fattah-Md-Shaki-CV.pdf",
-  download = "Abu-Fattah-Md-Shakib-CV.pdf",
+  href = "https://drive.google.com/file/d/1lj4Fx5HQ2H_tvPXTkbH_nOG31sO18AcL/view?usp=sharing",
+  download = null,
   target = "_blank",
   rel = "noopener noreferrer",
   type,
@@ -69,7 +69,7 @@ export default function ResumeButton({
     }
     : {
       href,
-      download,
+      ...(download ? { download } : {}),
       target,
       rel,
     };
